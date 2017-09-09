@@ -68,7 +68,7 @@ public class BookRuleSet implements RuleSet {
 		} catch(NumberFormatException e) {
 			throw new RuleException("Price must be floating point number");
 		}
-		if(val.charAt(val.length()-2-1 ) != '.')
+		if(val.length()<3 || val.charAt(val.length()-2-1) != '.')
 			throw new RuleException("Price must be a floating point number with two decimal places");
 		if((price-0.49) <0 || Math.abs(price - 0.49) <= 0.00000001) 
 			throw new RuleException("Price must be greater than 0.49");
