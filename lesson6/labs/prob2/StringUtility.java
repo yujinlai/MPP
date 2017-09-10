@@ -1,4 +1,4 @@
-package application;
+package lesson6.labs.prob2;
 	
 import javafx.application.Application;
 import javafx.event.ActionEvent;
