@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+
+<fx:root type="javafx.scene.layout.GridPane" alignment="CENTER" hgap="10.0" prefHeight="370.0" prefWidth="357.0" vgap="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+   </columnConstraints>
+   <children>
+      <Label text="Add Book" GridPane.columnSpan="2" GridPane.rowSpan="2">
+         <GridPane.margin>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </Label>
+      <Label text="ISBN:" GridPane.rowIndex="2" />
+      <Label text="Title" GridPane.rowIndex="3" />
+      <Label text="Authors:" GridPane.rowIndex="4" />
+      <Label text="Max Days:" GridPane.rowIndex="5" />
+      <Label text="Copy Nums:" GridPane.rowIndex="6" />
+      <Button mnemonicParsing="false" text="Add Book" GridPane.columnIndex="1" GridPane.rowIndex="7"  onAction="#AddBook"/>
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+   </children>
+</fx:root>
