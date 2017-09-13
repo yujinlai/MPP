@@ -10,6 +10,7 @@ import business.SystemController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -30,6 +31,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -68,7 +70,9 @@ public class MainWindow extends Stage {
 */
 	Stage primaryStage;
 	VBox mainContainer = new VBox();
-	//Parent root;
+	String[] paneIDs = {"#addMemberPane","#checkoutBookPane","#addCopyPane","#addBookPane",
+			"#printRecordPane","#CheckOverduePane"};
+
 	
 	public MainWindow(Stage ps) {
 		
@@ -167,11 +171,17 @@ public class MainWindow extends Stage {
 		//Stage primaryStage = ps;
 		setTitle("Library System");
 		try {
-			mainContainer = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
+			mainContainer = fxmlLoader.load();//FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+			fxmlLoader.setController(this);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+
+		AddButtonHandlers(); 
+		ShowPane(0);
 		Scene scene = new Scene(mainContainer, 800, 600,Color.BEIGE);
 		setScene(scene);
 		
@@ -538,6 +548,36 @@ public class MainWindow extends Stage {
         	}
         });*/
 		
+	}
+
+	private void ShowPane(int index) {
+		for(int i = 0; i < paneIDs.length; i++) {
+			Pane pane = (Pane)mainContainer.lookup(paneIDs[i]);
+			if(i == index) pane.setVisible(true);
+			else pane.setVisible(false);
+		}
+	}
+	
+	private void AddButtonHandlers() {
+		String[] ids = {"#addMemberBtn","#checkoutBookBtn","#addCopyBtn","#addBookBookBtn",
+				"#printRecordBtn","#checkoutOverdueBtn"};
+		for(int i = 0; i < ids.length; i++) {
+			Button checkoutBookBtn = (Button)mainContainer.lookup(ids[i]);
+			final int index = i;
+			checkoutBookBtn.setOnAction(new EventHandler<ActionEvent>() {
+	        	@Override
+	        	public void handle(ActionEvent e) {
+	        		try {        			        			
+	        			ShowPane(index);
+	        			
+	        		} catch(Exception ex) {
+	        			//messageBar.setFill(Start.Colors.red);
+	        			ex.printStackTrace();
+	        		}
+	        	   
+	        	}
+	        });
+		}
 	}
 	
 }

@@ -18,7 +18,7 @@
       </StackPane>
       <FlowPane prefHeight="53.0" prefWidth="497.0">
          <children>
-            <Button mnemonicParsing="false" text="Add Member">
+            <Button mnemonicParsing="false" text="Add Member" fx:id="addMemberBtn">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -26,7 +26,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </FlowPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Checkout Book">
+            <Button mnemonicParsing="false" text="Checkout Book" fx:id="checkoutBookBtn">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -34,7 +34,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </FlowPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Add Copy">
+            <Button mnemonicParsing="false" text="Add Copy" fx:id="addCopyBtn">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -42,7 +42,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </FlowPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Add Book">
+            <Button mnemonicParsing="false" text="Add Book" fx:id="addBookBookBtn">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -50,7 +50,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </FlowPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Print Record">
+            <Button mnemonicParsing="false" text="Print Record" fx:id="printRecordBtn">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -58,7 +58,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </FlowPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Checkout Overdue">
+            <Button mnemonicParsing="false" text="Checkout Overdue" fx:id="checkoutOverdueBtn">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -68,11 +68,15 @@
             </Button>
          </children>
       </FlowPane>
-      <FlowPane prefHeight="370.0" prefWidth="600.0">
+      <StackPane prefHeight="370.0" prefWidth="600.0">
       	 <children>
-      		<AddMemberWindow />
-      		<CheckoutBookWindow />
+      		<AddMemberWindow fx:id="addMemberPane"/>
+      		<CheckoutBookWindow fx:id="checkoutBookPane"/>
+      		<AddCopyWindow fx:id="addCopyPane"/>
+      		<AddBookWindow fx:id="addBookPane"/>
+      		<PrintRecordWindow fx:id="printRecordPane"/>
+      		<CheckOverdueWindow fx:id="CheckOverduePane"/>
       	</children>
-      </FlowPane>
+      </StackPane>
    </children>
 </VBox>
