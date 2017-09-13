@@ -1,112 +1,78 @@
+/*
+ * Copyright (c) 2011, 2012 Oracle and/or its affiliates.
+ * All rights reserved. Use is subject to license terms.
+ *
+ * This file is available and licensed under the following license:
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *  - Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  - Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the distribution.
+ *  - Neither the name of Oracle nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 package ui;
 
-import business.ControllerInterface;
-import business.LoginException;
-import business.SystemController;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class LoginWindow extends Stage implements LibWindow {
-	public static final LoginWindow INSTANCE = new LoginWindow();
 
-	private boolean isInitialized = false;
-
-	public boolean isInitialized() {
-		return isInitialized;
-	}
-	public void isInitialized(boolean val) {
-		isInitialized = val;
-	}
-	private Text messageBar = new Text();
-	public void clear() {
-		messageBar.setText("");
-	}
-    private LoginWindow () {}
-    public void init() {
-
-        GridPane grid = new GridPane();
-        grid.setId("top-container");
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
-
-        Text scenetitle = new Text("Login");
-        scenetitle.setFont(Font.font("Harlow Solid Italic", FontWeight.NORMAL, 20)); //Tahoma
-        grid.add(scenetitle, 0, 0, 2, 1);
-
-        Label userName = new Label("User Name:");
-        grid.add(userName, 0, 1);
-
-        TextField userTextField = new TextField();
-        //userTextField.setPrefColumnCount(10);
-        //userTextField.setPrefWidth(30);
-        grid.add(userTextField, 1, 1);
-
-        Label pw = new Label("Password:");
-        grid.add(pw, 0, 2);
-        grid.setGridLinesVisible(false) ;
-
-        PasswordField pwBox = new PasswordField();
-        grid.add(pwBox, 1, 2);
-
-        Button loginBtn = new Button("Log in");
-        HBox hbBtn = new HBox(10);
-        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
-        hbBtn.getChildren().add(loginBtn);
-        grid.add(hbBtn, 1, 4);
-
-        HBox messageBox = new HBox(10);
-        messageBox.setAlignment(Pos.BOTTOM_RIGHT);
-        messageBox.getChildren().add(messageBar);;
-        grid.add(messageBox, 1, 6);
-
-        loginBtn.setOnAction(new EventHandler<ActionEvent>() {
-        	@Override
-        	public void handle(ActionEvent e) {
-        		try {
-        			ControllerInterface c = new SystemController();
-        			c.login(userTextField.getText().trim(), pwBox.getText().trim());
-        			messageBar.setFill(Start.Colors.green);
-             	    messageBar.setText("Login successful");
-        		} catch(LoginException ex) {
-        			messageBar.setFill(Start.Colors.red);
-        			messageBar.setText("Error! " + ex.getMessage());
-        		}
-
-        	}
-        });
-
-        Button backBtn = new Button("<= Back to Main");
-        backBtn.setOnAction(new EventHandler<ActionEvent>() {
-        	@Override
-        	public void handle(ActionEvent e) {
-        		Start.hideAllWindows();
-        		Start.primStage().show();
-        	}
-        });
-        HBox hBack = new HBox(10);
-        hBack.setAlignment(Pos.BOTTOM_LEFT);
-        hBack.getChildren().add(backBtn);
-        grid.add(hBack, 0, 7);
-        Scene scene = new Scene(grid);
-        scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
-        setScene(scene);
-
+public class LoginWindow extends Application {
+    Stage mainWindow;
+    Stage primaryStage;
+    public static void main(String[] args) {
+    	launch(args);
     }
+    
+    @Override
+    public void start(Stage stage) throws Exception {
+    	this.primaryStage = stage;
+    	mainWindow = new MainWindow(primaryStage);
+        Parent root = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
+      //you can communicate with the components using id's
+        Text target = (Text)root.lookup("#actiontarget");
+        target.setFill(Color.FIREBRICK);
+        target.setText("Default text");
+        Button button = (Button)root.lookup("#button");
+        button.setOnAction(new EventHandler<ActionEvent>() {
 
-
+            @Override
+            public void handle(ActionEvent e) {        
+                //target.setText("Sign in button pressed");    	
+            	mainWindow.show();
+            	primaryStage.close();
+            }
+        });
+        
+        stage.setTitle("Login");
+        stage.setScene(new Scene(root, 300, 275));
+        stage.show();
+    }
 }
