@@ -1,11 +1,17 @@
 package ui;
 
+import java.util.Collections;
+import java.util.List;
+
+import business.ControllerInterface;
+import business.SystemController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -16,7 +22,7 @@ import javafx.stage.Stage;
 
 public class AllMembersWindow extends Stage implements LibWindow {
 	public static final AllMembersWindow INSTANCE = new AllMembersWindow();
-
+	
 	private boolean isInitialized = false;
 	public boolean isInitialized() {
 		return isInitialized;
@@ -29,7 +35,7 @@ public class AllMembersWindow extends Stage implements LibWindow {
 		ta.setText(data);
 	}
 	private AllMembersWindow() {}
-
+	
 	public void init() {
 		GridPane grid = new GridPane();
 		grid.setId("top-container");
@@ -43,14 +49,14 @@ public class AllMembersWindow extends Stage implements LibWindow {
         grid.add(scenetitle, 0, 0, 2, 1);
 
 		ta = new TextArea();
-		grid.add(ta, 0,1);
-
+		grid.add(ta, 0,1);	
+		
 		Button backBtn = new Button("<= Back to Main");
         backBtn.setOnAction(new EventHandler<ActionEvent>() {
         	@Override
         	public void handle(ActionEvent e) {
-        		Start.hideAllWindows();
-        		Start.primStage().show();
+        		//Start.hideAllWindows();
+        		//Start.primStage().show();
         	}
         });
         HBox hBack = new HBox(10);
