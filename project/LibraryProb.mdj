@@ -28956,7 +28956,7 @@
 													"left": 40,
 													"top": 80,
 													"width": 1,
-													"height": 415,
+													"height": 439,
 													"autoResize": false
 												}
 											],
@@ -28972,7 +28972,7 @@
 											"left": 8,
 											"top": 40,
 											"width": 64.8017578125,
-											"height": 455,
+											"height": 479,
 											"autoResize": false,
 											"stereotypeDisplay": "label",
 											"showVisibility": true,
@@ -29525,7 +29525,7 @@
 													"left": 90,
 													"top": 96,
 													"width": 14,
-													"height": 385,
+													"height": 409,
 													"autoResize": false
 												}
 											],
