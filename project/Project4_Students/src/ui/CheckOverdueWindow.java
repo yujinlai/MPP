@@ -22,11 +22,22 @@ public class CheckOverdueWindow extends VBox {
             throw new RuntimeException(exception);
         }
         
-        TableColumn<CheckOverdueData, String> bookNameCol = new TableColumn<>("Book Name");  
-        bookNameCol.setMinWidth(100);
-        bookNameCol.setCellValueFactory(
-            new PropertyValueFactory<CheckOverdueData, String>("bookName"));
-        bookNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        TableColumn<CheckOverdueData, String> isbnCol = new TableColumn<>("ISBN");  
+        isbnCol.setMinWidth(100);
+        isbnCol.setCellValueFactory(
+            new PropertyValueFactory<CheckOverdueData, String>("isbn"));
+        isbnCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        TableColumn<CheckOverdueData, String> bookTitleCol = new TableColumn<>("Book Title");  
+        bookTitleCol.setMinWidth(100);
+        bookTitleCol.setCellValueFactory(
+            new PropertyValueFactory<CheckOverdueData, String>("bookTitle"));
+        bookTitleCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        TableColumn<CheckOverdueData, String> bookNumberCol = new TableColumn<>("Book Number");  
+        bookNumberCol.setMinWidth(100);
+        bookNumberCol.setCellValueFactory(
+            new PropertyValueFactory<CheckOverdueData, String>("bookNumber"));
+        bookNumberCol.setCellFactory(TextFieldTableCell.forTableColumn());
 		
         TableColumn<CheckOverdueData, String> memberNameCol = new TableColumn<>("Member Name");
         memberNameCol.setMinWidth(100);
@@ -41,7 +52,7 @@ public class CheckOverdueWindow extends VBox {
         dueDayCol.setCellFactory(TextFieldTableCell.forTableColumn());
         
         TableView<CheckOverdueData> table = (TableView<CheckOverdueData>)lookup("#checkOverdueTable");
-        table.getColumns().addAll(bookNameCol,memberNameCol,dueDayCol);                
+        table.getColumns().addAll(isbnCol,bookTitleCol,bookNumberCol,memberNameCol,dueDayCol);                
 	}
 	
 	 @FXML
