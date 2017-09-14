@@ -15,7 +15,15 @@
    <children>
       <HBox>
          <children>
-            <Label prefHeight="85.0" prefWidth="275.0" text="Welcome  XXXXXXXX" textOverrun="CENTER_ELLIPSIS">
+            <ImageView fitHeight="94.0" fitWidth="383.0" pickOnBounds="true">
+               <image>
+                  <Image url="@library.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="107.0" prefWidth="171.0" text="Welcome  XXXXXXXX" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font size="34.0" />
                </font>
@@ -28,11 +36,11 @@
                   </RadialGradient>
                </textFill>
             </Label>
-            <ImageView fitHeight="94.0" fitWidth="383.0" pickOnBounds="true">
-               <image>
-                  <Image url="@library.jpg" />
-               </image>
-            </ImageView>
+            <Button id="logout" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" text="Logout">
+               <HBox.margin>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
       <FlowPane id="FuncBtnPane" prefHeight="53.0" prefWidth="497.0">
