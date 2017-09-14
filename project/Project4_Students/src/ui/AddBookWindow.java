@@ -23,4 +23,8 @@ public class AddBookWindow extends GridPane {
 	    protected void AddBook() {
 	        System.out.println("The button was clicked!");
 	    }
+	 @FXML
+	    protected void EditAuthors() {
+	        System.out.println("The button was clicked!");
+	    }
 }
