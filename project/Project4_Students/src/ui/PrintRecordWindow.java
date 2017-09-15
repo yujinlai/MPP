@@ -8,19 +8,23 @@ import javafx.scene.layout.GridPane;
 
 public class PrintRecordWindow extends GridPane {
 	public PrintRecordWindow() {
+		init();
+	}
+
+	@FXML
+	protected void PrintRecord() {
+		System.out.println("The button was clicked!");
+	}
+
+	public void init() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PrintRecord.fxml"));
-        fxmlLoader.setRoot(this);        
+        fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
- 
+
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
 	}
-	
-	 @FXML
-	    protected void PrintRecord() {
-	        System.out.println("The button was clicked!");
-	    }
 }

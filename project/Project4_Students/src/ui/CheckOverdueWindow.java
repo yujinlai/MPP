@@ -12,16 +12,26 @@ import javafx.scene.layout.VBox;
 
 public class CheckOverdueWindow extends VBox {
 	public CheckOverdueWindow() {
+		init();
+	}
+	
+	@FXML
+	protected void CheckOverdue() {
+		System.out.println("The button was clicked!");
+	}
+
+	@SuppressWarnings("unchecked")
+	public void init() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CheckOverdue.fxml"));
-        fxmlLoader.setRoot(this);        
+        fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
- 
+
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        
+
         TableColumn<CheckOverdueData, String> isbnCol = new TableColumn<>("ISBN");  
         isbnCol.setMinWidth(100);
         isbnCol.setCellValueFactory(
@@ -52,11 +62,6 @@ public class CheckOverdueWindow extends VBox {
         dueDayCol.setCellFactory(TextFieldTableCell.forTableColumn());
         
         TableView<CheckOverdueData> table = (TableView<CheckOverdueData>)lookup("#checkOverdueTable");
-        table.getColumns().addAll(isbnCol,bookTitleCol,bookNumberCol,memberNameCol,dueDayCol);                
+        table.getColumns().addAll(isbnCol,bookTitleCol,bookNumberCol,memberNameCol,dueDayCol); 
 	}
-	
-	 @FXML
-	    protected void CheckOverdue() {
-	        System.out.println("The button was clicked!");
-	    }
 }

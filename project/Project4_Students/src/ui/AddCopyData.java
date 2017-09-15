@@ -4,14 +4,14 @@ public class AddCopyData {
     private String bookName;
     private String copyNum;
     private String isAvailable;
-    
+
     public AddCopyData(String bookName, String copyNum, String isAvailable){
     	this.bookName = bookName;
     	this.copyNum = copyNum;
     	this.isAvailable = isAvailable;
- 
+
     }
-    
+
     public String getBookName() {
         return bookName;
     }

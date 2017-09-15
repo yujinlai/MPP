@@ -32,47 +32,109 @@
 
 package ui;
 
-import javafx.application.Application;
+import java.io.IOException;
+
+import business.ControllerInterface;
+import business.LoginException;
+import business.SystemController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.paint.Color;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import ui.rulesets.RuleException;
+import ui.rulesets.RuleSet;
+import ui.rulesets.RuleSetFactory;
 
+public class LoginWindow extends Stage implements LibWindow {
+    public static final LoginWindow INSTANCE = new LoginWindow();
+    private boolean isInitialized = false;
+	public boolean isInitialized() {
+		return isInitialized;
+	}
+	public void isInitialized(boolean val) {
+		isInitialized = val;
+	}
+	private static Stage mainWindow;
+	public Stage getMainWindow() {
+		return mainWindow;
+	}
+	public void setMainWindow(Stage mWindow) {
+		mainWindow = mWindow;
+	}
+	private static Stage primaryStage = null;
+	public Stage primStage() {
+		return primaryStage;
+	}
+	public void setPrimStage(Stage primStage) {
+		primaryStage = primStage;
+	}
 
-public class LoginWindow extends Application {
-    Stage mainWindow;
-    Stage primaryStage;
-    public static void main(String[] args) {
-    	launch(args);
-    }
-    
-    @Override
-    public void start(Stage stage) throws Exception {
-    	this.primaryStage = stage;
-    	mainWindow = new MainWindow(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
-      //you can communicate with the components using id's
-        Text target = (Text)root.lookup("#actiontarget");
-        target.setFill(Color.FIREBRICK);
-        target.setText("Default text");
-        Button button = (Button)root.lookup("#button");
-        button.setOnAction(new EventHandler<ActionEvent>() {
+	@FXML
+	private TextField usernameField;
+	
+	@FXML
+	private PasswordField passwordField;
+	
+	@FXML
+	private Text actiontarget;
+	
+	@FXML
+	private Button button;
+	
+	public TextField getUsernameField() {
+		return usernameField;
+	}
+	
+	public PasswordField getPasswordField() {
+		return passwordField;
+	}
 
-            @Override
-            public void handle(ActionEvent e) {        
-                //target.setText("Sign in button pressed");    	
-            	mainWindow.show();
-            	primaryStage.close();
-            }
-        });
-        
-        stage.setTitle("Login");
-        stage.setScene(new Scene(root, 300, 275));
-        stage.show();
-    }
+	public Text getActiontarget() {
+		return actiontarget;
+	}
+
+	public Button getButton() {
+		return button;
+	}
+
+	@Override
+	public void init() {
+		mainWindow = new MainWindow(primaryStage);
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginWindow.fxml"));
+		//fxmlLoader.setRoot(this);
+		fxmlLoader.setController(this);
+		
+        try {
+            fxmlLoader.load();            
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+		
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {		
+				try {
+					RuleSet rules = RuleSetFactory.getRuleSet(LoginWindow.this);
+					rules.applyRules(LoginWindow.this);
+					ControllerInterface c = new SystemController();
+					c.login(usernameField.getText().trim(), passwordField.getText().trim());
+					mainWindow.show();
+					primaryStage.close();
+				} catch (RuleException e1) {
+					actiontarget.setText("All fields must be non-empty");
+				} catch (LoginException e1) {
+					actiontarget.setText("Either the user name or password is wrong");
+				}
+			}
+		});
+		primaryStage.setTitle("Login");
+		primaryStage.setScene(new Scene(fxmlLoader.getRoot(), 300, 275));
+		primaryStage.show();	
+	}
 }

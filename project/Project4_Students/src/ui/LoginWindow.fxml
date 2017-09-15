@@ -18,7 +18,7 @@
   <Label text="User Name:" 
       GridPane.columnIndex="0" GridPane.rowIndex="1" />
   
-  <TextField 
+  <TextField fx:id="usernameField" 
       GridPane.columnIndex="1" GridPane.rowIndex="1" />
   
   <Label text="Password:" 
@@ -29,7 +29,7 @@
   
   <HBox spacing="10" alignment="bottom_right" 
       GridPane.columnIndex="1" GridPane.rowIndex="4">
-      <Button text="Sign In"  id="button" />
+      <Button text="Sign In"  fx:id="button" />
   </HBox>
   
   <Text fx:id="actiontarget" 
