@@ -100,9 +100,9 @@
       </FlowPane>
       <StackPane prefHeight="370.0" prefWidth="600.0">
       	 <children>
-      		<AddMemberWindow fx:id="addMemberPane" />
+      		<AddLibMemberWindow fx:id="addMemberPane" />
       		<CheckoutBookWindow fx:id="checkoutBookPane" />
-      		<AddCopyWindow fx:id="addCopyPane" />
+      		<AddBookCopyWindow fx:id="addCopyPane" />
       		<AddBookWindow fx:id="addBookPane" />
       		<PrintRecordWindow fx:id="printRecordPane" />
       		<CheckOverdueWindow fx:id="CheckOverduePane" />
