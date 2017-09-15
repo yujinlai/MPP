@@ -68,7 +68,7 @@ public class LoginWindow extends Stage implements LibWindow {
 		mainWindow = mWindow;
 	}
 	private static Stage primaryStage = null;
-	public Stage primStage() {
+	public Stage getPrimStage() {
 		return primaryStage;
 	}
 	public void setPrimStage(Stage primStage) {
@@ -124,8 +124,9 @@ public class LoginWindow extends Stage implements LibWindow {
 					rules.applyRules(LoginWindow.this);
 					ControllerInterface c = new SystemController();
 					c.login(usernameField.getText().trim(), passwordField.getText().trim());
-					mainWindow.show();
-					primaryStage.close();
+					((MainWindow) mainWindow).updateWelcomeInfo();
+					mainWindow.show();				
+					primaryStage.hide();
 				} catch (RuleException e1) {
 					actiontarget.setText("All fields must be non-empty");
 				} catch (LoginException e1) {
@@ -136,5 +137,12 @@ public class LoginWindow extends Stage implements LibWindow {
 		primaryStage.setTitle("Login");
 		primaryStage.setScene(new Scene(fxmlLoader.getRoot(), 300, 275));
 		primaryStage.show();	
+	}
+	
+	public void reInit() {
+		LoginWindow.INSTANCE.getMainWindow().close();
+		usernameField.setText("");
+		passwordField.setText("");
+		LoginWindow.INSTANCE.getPrimStage().show();
 	}
 }
