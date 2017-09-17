@@ -111,9 +111,11 @@ public class SystemController implements ControllerInterface {
 	//use case 6
 	public CheckOutRecord getCheckoutRecord(String memberId) {
 		DataAccess da = new DataAccessFacade();
-		HashMap<String, LibraryMember> membersMap = da.readMemberMap();
-		LibraryMember libMember = membersMap.get(memberId);
-		return libMember.getCheckoutRecord();
+		HashMap<String, CheckOutRecord> records = da.readCheckoutRecords();
+		if(records == null)
+			return new CheckOutRecord(memberId);
+		return records.get(memberId);
+        
 	}
 
 	@Override

@@ -10,7 +10,6 @@ public class LoginRuleSet implements RuleSet {
 	public void applyRules(LibController libContrl) throws RuleException {
 		login = (LoginController)libContrl;
 		nonemptyRule();
-		
 	}
 	
 	private void nonemptyRule() throws RuleException {

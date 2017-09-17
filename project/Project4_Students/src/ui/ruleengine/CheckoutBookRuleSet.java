@@ -23,6 +23,7 @@ public class CheckoutBookRuleSet implements RuleSet {
 	public void applyRules(LibController ob) throws RuleException {
 		checkoutBook = (CheckoutBookController) ob;
 		nonemptyRule();
+		isNumericRule();
 		isbnFormatRule();
 	}
 
@@ -31,6 +32,16 @@ public class CheckoutBookRuleSet implements RuleSet {
 				checkoutBook.getIsbn().getText().trim().isEmpty()) {
 			throw new RuleException("All fields must be non-empty!");
 		}
+	}
+	
+	private void isNumericRule() throws RuleException {
+		String val = checkoutBook.getMemberID().getText().trim();
+		try {
+			Integer.parseInt(val);
+			//val is numeric
+		} catch(NumberFormatException e) {
+			throw new RuleException("Member ID must be numeric");
+		}	
 	}
 	
 	private void isbnFormatRule() throws RuleException {

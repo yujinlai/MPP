@@ -11,6 +11,7 @@ import ui.controller.AddMemberController;
 import ui.controller.CheckoutBookController;
 import ui.controller.LibController;
 import ui.controller.LoginController;
+import ui.controller.PrintController;
 
 final public class RuleSetFactory {
 	private RuleSetFactory(){}
@@ -24,6 +25,7 @@ final public class RuleSetFactory {
 		map3.put(LoginController.class, new LoginRuleSet());
 		map3.put(AddMemberController.class, new LibraryMemberRuleSet());
 		map3.put(CheckoutBookController.class, new CheckoutBookRuleSet());
+		map3.put(PrintController.class, new PrintRecordsRuleSet());
 	}
 	public static RuleSet getRuleSet(Pane c) {
 		Class<? extends Pane> cl = c.getClass();
