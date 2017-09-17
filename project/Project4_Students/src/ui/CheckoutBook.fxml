@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefHeight="356.0" prefWidth="594.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" 
-                 xmlns:fx="http://javafx.com/fxml/1"  fx:controller="ui.controller.CheckoutBookController">
+<fx:root prefHeight="356.0" prefWidth="594.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.CheckoutBookController">
    <children>
       <Label alignment="CENTER" prefHeight="34.0" prefWidth="189.0" text="Checkout Book">
          <font>
@@ -55,6 +54,6 @@
           
         </columns>
       </TableView>
-      <Text fx:id="actiontarget" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+      <Text fx:id="actiontarget" wrappingWidth="450.0" />
    </children>
 </fx:root>
