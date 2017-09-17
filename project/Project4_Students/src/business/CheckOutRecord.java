@@ -7,7 +7,22 @@ import java.util.List;
 public class CheckOutRecord implements Serializable {
 
 	private static final long serialVersionUID = 6111662638192434968L;
-	private ArrayList<CheckoutRecordEntry> entries = new ArrayList<>();
+	private String memberID = null;
+	
+	private ArrayList<CheckoutRecordEntry> entries;
+	
+	public String getMemberID() {
+		return memberID;
+	}
+
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
+	}
+	
+	public CheckOutRecord(String memberID) {
+		setMemberID(memberID);
+		entries = new ArrayList<CheckoutRecordEntry>();
+	}
 
 	public ArrayList<CheckoutRecordEntry> getCheckOutRecords() {
 		return entries;
@@ -18,7 +33,9 @@ public class CheckOutRecord implements Serializable {
 	}
 
 	public void addCheckOut(CheckoutRecordEntry entry){
-		this.entries.add(entry);
+		if(entries == null)
+			entries = new ArrayList<>();
+		entries.add(entry);
 	}
 
 	public List<BookCopy> searchBookCopies(String isbn){

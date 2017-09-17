@@ -5,7 +5,7 @@ import java.io.Serializable;
 final public class LibraryMember extends Person implements Serializable {
 	private String memberId;
 
-	private CheckOutRecord checkoutRecord = new CheckOutRecord();
+	private CheckOutRecord checkoutRecord = new CheckOutRecord(memberId);
 
 	public CheckOutRecord getCheckoutRecord() {
 		return checkoutRecord;
@@ -36,6 +36,8 @@ final public class LibraryMember extends Person implements Serializable {
 	private static final long serialVersionUID = -2226197306790714013L;
 
 	public void addCheckoutBook(CheckoutRecordEntry entry){
+		if(checkoutRecord == null)
+			checkoutRecord = new CheckOutRecord(memberId);
 		checkoutRecord.addCheckOut(entry);
 	}
 }

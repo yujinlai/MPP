@@ -78,8 +78,14 @@ public class SystemController implements ControllerInterface {
 		int day = currentDate.getDate() + booksMap.get(isbn).getMaxCheckoutLength();
 		Date expireDate = new Date(currentDate.getYear(), currentDate.getMonth(), day);
 		CheckoutRecordEntry entry = new CheckoutRecordEntry(bookCopy,new Date(), expireDate);
-		membersMap.get(memberId).addCheckoutBook(entry);
+		CheckOutRecord oldRecord = da.readCheckoutRecords().get(memberId);
+		if(oldRecord == null)
+			oldRecord = new CheckOutRecord(memberId);
+		oldRecord.addCheckOut(entry);
+		//membersMap.get(memberId).addCheckoutBook(entry);
+		da.saveNewCheckoutRecord(oldRecord);
 		booksMap.get(isbn).updateCopies(bookCopy);
+		da.saveNewBook(booksMap.get(isbn)); //save new copy
 		return entry;
 	}
 

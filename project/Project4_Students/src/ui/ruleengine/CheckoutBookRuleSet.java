@@ -1,5 +1,8 @@
 package ui.ruleengine;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import ui.controller.CheckoutBookController;
 import ui.controller.LibController;
 
@@ -12,14 +15,15 @@ import ui.controller.LibController;
  *  5. If Isbn has length 13, the first 3 digits must be either 978 or 979
  */
 public class CheckoutBookRuleSet implements RuleSet {
+	private String isbn_regex = "^([0-9-]+)$";
+	
 	private CheckoutBookController checkoutBook;
 	
 	@Override
 	public void applyRules(LibController ob) throws RuleException {
 		checkoutBook = (CheckoutBookController) ob;
 		nonemptyRule();
-		isNumericRule();
-		lengthRule();
+		isbnFormatRule();
 	}
 
 	private void nonemptyRule() throws RuleException {
@@ -29,34 +33,11 @@ public class CheckoutBookRuleSet implements RuleSet {
 		}
 	}
 	
-	private void isNumericRule() throws RuleException {
-		String val = checkoutBook.getMemberID().getText().trim();
-		try {
-			Integer.parseInt(val);
-			//val is numeric
-		} catch(NumberFormatException e) {
-			throw new RuleException("Member ID must be numeric");
-		}	
-		String ISBN = checkoutBook.getIsbn().getText().trim();
-		try {
-			Integer.parseInt(ISBN);
-			//val is numeric
-		} catch(NumberFormatException e) {
-			throw new RuleException("ISBN must be numeric");
-		}
-	}
-	
-	private void lengthRule() throws RuleException {
+	private void isbnFormatRule() throws RuleException {
 		String val = checkoutBook.getIsbn().getText().trim();
-		if(val.length() != 10 && val.length() != 13)
-			throw new RuleException("Isbn must be numeric");
-		if(val.length() == 10) {
-			if(!val.startsWith("0") && !val.startsWith("1"))
-				throw new RuleException("The first digit should be 0 or 1 in the case that Isbn has length 10");
-		}
-		if(val.length() == 13) {
-			if(!val.startsWith("978") && !val.startsWith("979"))
-				throw new RuleException("The first digit should be either 978 or 979 in the case that Isbn has length 13");
-		}
+		Pattern pattern = Pattern.compile(isbn_regex);
+		Matcher matcher = pattern.matcher(val);
+		if(!matcher.matches())
+			throw new RuleException("The isbn must only contain with '0-9' and '-'!");
 	}
 }

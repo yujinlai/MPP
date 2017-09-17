@@ -33,10 +33,12 @@ public class CheckoutBookData {
 	public void setCheckoutDate(String checkoutDate) {
 		this.checkoutDate = checkoutDate;
 	}
-	public String getdueDate() {
-        return dueDate;
-    }
-	public void setDescription(String dueDate) {
+
+	public String getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
 }
