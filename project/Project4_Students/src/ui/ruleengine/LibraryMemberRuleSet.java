@@ -9,8 +9,8 @@ import ui.controller.LibController;
 /**
  * Rules:
  *  1. All fields must be nonempty 
- *  2. Price must be a floating point number with two decimal places 
- *  3. Price must be a number greater than 0.49. 
+ *  2. memberID must be numeric 
+ *  3. phone number must be in the format of xxx-xxx-xxxx 
  */
 
 public class LibraryMemberRuleSet implements RuleSet {
@@ -23,7 +23,7 @@ public class LibraryMemberRuleSet implements RuleSet {
 	public void applyRules(LibController libContrl) throws RuleException {
 		addLibMember = (AddMemberController) libContrl;
 		nonemptyRule();
-		idNumericRule();
+		isNumericRule();
 		telephoneFormatRule();
 	}
 	
@@ -36,7 +36,7 @@ public class LibraryMemberRuleSet implements RuleSet {
 		}
 	}
 	
-	private void idNumericRule() throws RuleException {
+	private void isNumericRule() throws RuleException {
 		String val = addLibMember.getId().getText().trim();
 		try {
 			Integer.parseInt(val);

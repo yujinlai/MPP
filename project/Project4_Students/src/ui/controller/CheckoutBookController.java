@@ -29,6 +29,35 @@ public class CheckoutBookController implements LibController {
 	@FXML
 	private TableView<CheckoutRecordEntry> checkoutBookTable;
 	
+	
+	/**
+	 * @return the memberID
+	 */
+	public TextField getMemberID() {
+		return memberID;
+	}
+
+//	/**
+//	 * @param memberID the memberID to set
+//	 */
+//	public void setMemberID(TextField memberID) {
+//		this.memberID = memberID;
+//	}
+
+	/**
+	 * @return the isbn
+	 */
+	public TextField getIsbn() {
+		return isbn;
+	}
+
+//	/**
+//	 * @param isbn the isbn to set
+//	 */
+//	public void setIsbn(TextField isbn) {
+//		this.isbn = isbn;
+//	}
+
 	@FXML
 	public void checkoutBook() {
 		try {
