@@ -20,35 +20,32 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" />
    </rowConstraints>
    <columnConstraints>
       <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
    </columnConstraints>
    <children>
-      <Label text="ID:" GridPane.rowIndex="2" />
-      <Label text="First Name:" GridPane.rowIndex="3" />
-      <Label text="Last Name:" GridPane.rowIndex="4" />
-      <Label text="Street:" GridPane.rowIndex="5" />
-      <Label text="City:" GridPane.rowIndex="6" />
-      <Label text="State:" GridPane.rowIndex="7" />
-      <Label text="Zip code:" GridPane.rowIndex="8" />
-      <Label text="Telephone" GridPane.rowIndex="9" />
-      <TextField fx:id="id" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField fx:id="firstName" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <TextField fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <TextField fx:id="street" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <TextField fx:id="city" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-      <TextField fx:id="state" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-      <TextField fx:id="zipCode" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-      <TextField fx:id="telephone" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-      <Button mnemonicParsing="false" onAction="#AddMember" text="Add Member" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-      <Text fx:id="actiontarget" wrappingWidth="87.0" GridPane.columnIndex="0" GridPane.rowIndex="12" />
-      <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="All Members" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Member" wrappingWidth="226.12109375" GridPane.rowIndex="1">
+      <Label text="ID:" GridPane.rowIndex="1" />
+      <Label text="First Name:" GridPane.rowIndex="2" />
+      <Label text="Last Name:" GridPane.rowIndex="3" />
+      <Label text="Street:" GridPane.rowIndex="4" />
+      <Label text="City:" GridPane.rowIndex="5" />
+      <Label text="State:" GridPane.rowIndex="6" />
+      <Label text="Zip code:" GridPane.rowIndex="7" />
+      <Label text="Telephone" GridPane.rowIndex="8" />
+      <TextField fx:id="id" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="firstName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="street" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <TextField fx:id="city" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <TextField fx:id="state" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <TextField fx:id="zipCode" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <TextField fx:id="telephone" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Button mnemonicParsing="false" onAction="#AddMember" text="Add Member" GridPane.rowIndex="9" />
+      <Text fx:id="actiontarget" wrappingWidth="260.0" GridPane.rowIndex="10" />
+      <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="All Members" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Member" wrappingWidth="226.12109375">
          <font>
             <Font size="18.0" />
          </font>
