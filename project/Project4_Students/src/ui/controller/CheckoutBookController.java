@@ -1,9 +1,13 @@
 package ui.controller;
 
+import java.text.SimpleDateFormat;
+
 import business.CheckoutRecordEntry;
 import business.ControllerInterface;
 import business.LibrarySystemException;
 import business.SystemController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -27,7 +31,7 @@ public class CheckoutBookController implements LibController {
 	private Text actiontarget;
 	
 	@FXML
-	private TableView<CheckoutRecordEntry> checkoutBookTable;
+	private TableView<CheckoutBookData> checkoutBookTable;
 	
 	@FXML
 	public void checkoutBook() {
@@ -36,6 +40,7 @@ public class CheckoutBookController implements LibController {
 			rules.applyRules(CheckoutBookController.this);
 			ControllerInterface c = new SystemController();
 			CheckoutRecordEntry entry = c.checkoutBook(memberID.getText().trim(), isbn.getText().trim());
+			setBookRecord(entry);
 			emptyAllFields();
 			actiontarget.setText("check out success");
 		} catch (RuleException e) {
@@ -45,6 +50,7 @@ public class CheckoutBookController implements LibController {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@FXML
 	private void initialize() {
 	    TableColumn<CheckoutBookData, String> bookNameCol = new TableColumn<>("Book Name");
@@ -70,13 +76,27 @@ public class CheckoutBookController implements LibController {
 	    dueDateCol.setCellValueFactory(
 	        new PropertyValueFactory<CheckoutBookData, String>("dueDate"));
 	    dueDateCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
-	    //checkoutBookTable.getColumns().addAll(bookNameCol,copyNumCol,checkoutDateCol, dueDateCol);
-			
+        
+	    checkoutBookTable.getColumns().addAll(bookNameCol,copyNumCol,checkoutDateCol, dueDateCol);	
+	    
 	}
 	
 	private void emptyAllFields() {
 		memberID.setText("");
 		isbn.setText("");
+	}
+	
+	public void setBookRecord(CheckoutRecordEntry entry) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		CheckoutBookData cdata= new CheckoutBookData(entry.getRequestedBook().getBook().getTitle(),
+				String.valueOf(entry.getRequestedBook().getCopyNum()), 
+				sdf.format(entry.getCheckoutDate()),
+				sdf.format(entry.getDueDate()));
+		ObservableList<CheckoutBookData> checkoutBook = FXCollections.observableArrayList(cdata);
+		setData(checkoutBook);
+	}
+	
+	private void setData(ObservableList<CheckoutBookData> checkoutBook) {
+		checkoutBookTable.setItems(checkoutBook);
 	}
 }
