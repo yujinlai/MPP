@@ -7,9 +7,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<fx:root alignment="CENTER" hgap="25.0" prefHeight="450.0" prefWidth="325.0" type="javafx.scene.layout.GridPane" vgap="25.0" xmlns="http://javafx.com/javafx/8" 
-         xmlns:fx="http://javafx.com/fxml/1"  fx:controller="ui.controller.AddMemberController">
+<fx:root alignment="CENTER" hgap="25.0" prefHeight="450.0" prefWidth="325.0" type="javafx.scene.layout.GridPane" vgap="25.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.AddMemberController">
    <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
@@ -45,12 +46,13 @@
       <TextField fx:id="zipCode" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <TextField fx:id="telephone" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <Button mnemonicParsing="false" onAction="#AddMember" text="Add Member" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-      <Label alignment="CENTER" text="Add Library Member" GridPane.columnSpan="2" GridPane.rowSpan="2">
+      <Text fx:id="actiontarget" wrappingWidth="87.0" GridPane.columnIndex="0" GridPane.rowIndex="12" />
+      <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="All Members" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Member" wrappingWidth="226.12109375" GridPane.rowIndex="1">
          <font>
-            <Font size="15.0" />
+            <Font size="18.0" />
          </font>
-      </Label>
-      <Text fx:id="actiontarget" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+      </Text>
    </children>
    <padding>
       <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
