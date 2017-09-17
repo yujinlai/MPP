@@ -110,4 +110,20 @@ public class MainWindow extends Stage {
 		welcomeLable.setText("welcome " + SystemController.logName);
 	}
 	
+	//set initial state of main window when sign out
+	public void setInitial() {
+		String[] libmemids = {"#addMemberBtn"};
+		String[] adminlibids = {"#checkoutBookBtn"};
+		//if(SystemController.currentAuth == Auth.LIBRARIAN) {
+		for(int i = 0; i < libmemids.length; i++) {
+			Button checkoutBookBtn = (Button)mainContainer.lookup(libmemids[i]);
+			checkoutBookBtn.setDisable(false);
+		}
+		//} else if (SystemController.currentAuth == Auth.ADMIN) {
+		for(int i = 0; i < libmemids.length; i++) {
+			Button checkoutBookBtn = (Button)mainContainer.lookup(adminlibids[i]);
+			checkoutBookBtn.setDisable(false);
+		}
+		//}
+	}
 }
