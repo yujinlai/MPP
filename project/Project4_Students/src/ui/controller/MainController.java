@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import ui.LoginWindow;
-import ui.MainWindow;
 
 public class MainController implements LibController {
 	@FXML
@@ -24,7 +23,6 @@ public class MainController implements LibController {
 	
 	@FXML
 	public void logout() {
-		((MainWindow)LoginWindow.INSTANCE.getMainWindow()).setInitial();
 		LoginWindow.INSTANCE.getMainWindow().close();
 		LoginWindow.INSTANCE.getPrimStage().show();
 	}
