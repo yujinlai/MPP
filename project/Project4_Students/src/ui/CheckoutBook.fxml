@@ -7,20 +7,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefHeight="356.0" prefWidth="594.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" 
-                 xmlns:fx="http://javafx.com/fxml/1"  fx:controller="ui.controller.CheckoutBookController">
+<fx:root prefHeight="356.0" prefWidth="594.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.CheckoutBookController">
    <children>
-      <Label alignment="CENTER" prefHeight="34.0" prefWidth="189.0" text="Checkout Book">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Checkout Book">
          <font>
-            <Font size="15.0" />
+            <Font size="29.0" />
          </font>
-         <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </VBox.margin>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </Label>
+      </Text>
       <HBox prefHeight="45.0" prefWidth="296.0">
          <children>
             <Label text="memberID:">
@@ -55,6 +48,6 @@
           
         </columns>
       </TableView>
-      <Text fx:id="actiontarget" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+      <Text fx:id="actiontarget" wrappingWidth="450.0" />
    </children>
 </fx:root>

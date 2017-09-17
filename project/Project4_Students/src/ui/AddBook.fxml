@@ -7,8 +7,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<fx:root alignment="CENTER" hgap="10.0" prefHeight="374.0" prefWidth="393.0" type="javafx.scene.layout.GridPane" vgap="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="CENTER" hgap="10.0" prefHeight="395.0" prefWidth="445.0" type="javafx.scene.layout.GridPane" vgap="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
@@ -21,7 +25,6 @@
       <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints maxWidth="160.0" minWidth="10.0" prefWidth="121.0" />
       <ColumnConstraints maxWidth="95.0" minWidth="10.0" prefWidth="60.0" />
-      <ColumnConstraints maxWidth="95.0" minWidth="10.0" prefWidth="61.0" />
    </columnConstraints>
    <children>
       <Label alignment="CENTER" prefHeight="67.0" prefWidth="271.0" text="Add Book" GridPane.columnSpan="4" GridPane.rowSpan="2">
@@ -37,16 +40,20 @@
       </Label>
       <Label text="ISBN:" GridPane.rowIndex="2" />
       <Label text="Title" GridPane.rowIndex="3" />
-      <Label text="Authors:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Label text="Max Days:" GridPane.rowIndex="4" />
-      <Label text="Copy Nums:" GridPane.rowIndex="5" />
-      <Button mnemonicParsing="false" onAction="#AddBook" prefHeight="25.0" prefWidth="104.0" text="Add Book" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Label text="Authors:" GridPane.rowIndex="4" />
+      <Label text="Max Days:" GridPane.rowIndex="7" />
+      <Label text="Copy Nums:" GridPane.rowIndex="8" />
+      <Button mnemonicParsing="false" onAction="#AddBook" prefHeight="25.0" prefWidth="104.0" text="Add Book" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <Button mnemonicParsing="false" onAction="#EditAuthors" prefHeight="25.0" prefWidth="62.0" text="Edit..." GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      <ListView prefHeight="118.0" prefWidth="109.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="3" />
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Button mnemonicParsing="false" onAction="#EditAuthors" prefHeight="25.0" prefWidth="62.0" text="Edit..." GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <ListView prefHeight="118.0" prefWidth="109.0" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="3" />
+      <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="67.0" text="New..." GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="68.0" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+      <Button mnemonicParsing="false" text="All Books" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="297.12109375" GridPane.rowIndex="10" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
