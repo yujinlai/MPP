@@ -1,4 +1,4 @@
-package ui.rulesets;
+package ui.ruleengine;
 
 @SuppressWarnings("serial")
 final public class RuleException extends Exception {

@@ -8,7 +8,7 @@
 
 <GridPane 
     xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" 
-    styleClass="root">
+    styleClass="root"  fx:controller="ui.controller.LoginController">
   <padding><Insets top="25" right="25" bottom="10" left="25" /></padding>
   
   <Text id="welcome-text" text="Welcome" 
@@ -29,7 +29,7 @@
   
   <HBox spacing="10" alignment="bottom_right" 
       GridPane.columnIndex="1" GridPane.rowIndex="4">
-      <Button text="Sign In"  fx:id="button" />
+      <Button text="Sign In"  fx:id="button"  onAction="#handleLogin"/>
   </HBox>
   
   <Text fx:id="actiontarget" 

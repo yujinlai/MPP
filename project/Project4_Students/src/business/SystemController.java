@@ -13,7 +13,8 @@ import dataaccess.User;
 
 public class SystemController implements ControllerInterface {
 	public static Auth currentAuth = null;
-
+	public static String logName = null;
+	
 	//use case 1
 	public void login(String id, String password) throws LoginException {
 		DataAccess da = new DataAccessFacade();
@@ -26,6 +27,7 @@ public class SystemController implements ControllerInterface {
 			throw new LoginException("Password incorrect");
 		}
 		currentAuth = map.get(id).getAuthorization();
+		logName = id;
 	}
 
 	@Override
@@ -46,7 +48,10 @@ public class SystemController implements ControllerInterface {
 
 	@Override
 	//use case 2
-	public void addLibraryMember(LibraryMember libraryMember){
+	public void addLibraryMember(String userID, String firstName, String lastName, String street, String city, 
+			String state, String zipCode, String telephone) {
+		LibraryMember libraryMember = new LibraryMember(userID, firstName, lastName, telephone,
+				new Address(street, city, state, zipCode));
 		DataAccess da = new DataAccessFacade();
 		da.saveNewMember(libraryMember);
 	}
@@ -54,7 +59,7 @@ public class SystemController implements ControllerInterface {
 	@SuppressWarnings("deprecation")
 	@Override
 	//use case 3
-	public void checkoutBook(String memberId, String isbn) throws LibrarySystemException{
+	public CheckoutRecordEntry checkoutBook(String memberId, String isbn) throws LibrarySystemException{
 		DataAccess da = new DataAccessFacade();
 		HashMap<String, LibraryMember> membersMap = da.readMemberMap();
 		if(!membersMap.containsKey(memberId)) {
@@ -72,9 +77,10 @@ public class SystemController implements ControllerInterface {
 		Date currentDate = new Date();
 		int day = currentDate.getDate() + booksMap.get(isbn).getMaxCheckoutLength();
 		Date expireDate = new Date(currentDate.getYear(), currentDate.getMonth(), day);
-		membersMap.get(memberId).addCheckoutBook(new CheckoutRecordEntry(bookCopy,
-				new Date(), expireDate));
+		CheckoutRecordEntry entry = new CheckoutRecordEntry(bookCopy,new Date(), expireDate);
+		membersMap.get(memberId).addCheckoutBook(entry);
 		booksMap.get(isbn).updateCopies(bookCopy);
+		return entry;
 	}
 
 	@Override

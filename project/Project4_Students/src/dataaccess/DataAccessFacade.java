@@ -163,5 +163,12 @@ public class DataAccessFacade implements DataAccess {
 		}
 		private static final long serialVersionUID = 5399827794066637059L;
 	}
-
+	
+	public static void main(String[] args) {
+		DataAccessFacade a = new DataAccessFacade();
+		HashMap<String, LibraryMember> aaMap = a.readMemberMap();
+		for(String id : aaMap.keySet()) {
+			System.out.println(id);
+		}    	
+	}
 }

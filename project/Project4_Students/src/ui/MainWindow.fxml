@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import ui.*?>
 
-<VBox prefHeight="550.0" prefWidth="684.0" stylesheets="@Login.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="550.0" prefWidth="684.0" stylesheets="@Login.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.MainController">
    <children>
       <HBox>
          <children>
@@ -36,7 +36,7 @@
                   </RadialGradient>
                </textFill>
             </Label>
-            <Button fx:id="logout" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" text="Logout">
+            <Button fx:id="logout" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" text="Logout" onAction="#logout">
                <HBox.margin>
                   <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
                </HBox.margin>

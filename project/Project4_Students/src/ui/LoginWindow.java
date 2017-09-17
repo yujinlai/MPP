@@ -34,22 +34,9 @@ package ui;
 
 import java.io.IOException;
 
-import business.ControllerInterface;
-import business.LoginException;
-import business.SystemController;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import ui.rulesets.RuleException;
-import ui.rulesets.RuleSet;
-import ui.rulesets.RuleSetFactory;
 
 public class LoginWindow extends Stage implements LibWindow {
     public static final LoginWindow INSTANCE = new LoginWindow();
@@ -74,41 +61,15 @@ public class LoginWindow extends Stage implements LibWindow {
 	public void setPrimStage(Stage primStage) {
 		primaryStage = primStage;
 	}
-
-	@FXML
-	private TextField usernameField;
 	
-	@FXML
-	private PasswordField passwordField;
-	
-	@FXML
-	private Text actiontarget;
-	
-	@FXML
-	private Button button;
-	
-	public TextField getUsernameField() {
-		return usernameField;
-	}
-	
-	public PasswordField getPasswordField() {
-		return passwordField;
-	}
-
-	public Text getActiontarget() {
-		return actiontarget;
-	}
-
-	public Button getButton() {
-		return button;
+	public LoginWindow() {
+		
 	}
 
 	@Override
 	public void init() {
 		mainWindow = new MainWindow(primaryStage);
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginWindow.fxml"));
-		//fxmlLoader.setRoot(this);
-		fxmlLoader.setController(this);
 		
         try {
             fxmlLoader.load();            
@@ -116,33 +77,8 @@ public class LoginWindow extends Stage implements LibWindow {
             throw new RuntimeException(exception);
         }
 		
-		button.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {		
-				try {
-					RuleSet rules = RuleSetFactory.getRuleSet(LoginWindow.this);
-					rules.applyRules(LoginWindow.this);
-					ControllerInterface c = new SystemController();
-					c.login(usernameField.getText().trim(), passwordField.getText().trim());
-					((MainWindow) mainWindow).updateWelcomeInfo();
-					mainWindow.show();				
-					primaryStage.hide();
-				} catch (RuleException e1) {
-					actiontarget.setText("All fields must be non-empty");
-				} catch (LoginException e1) {
-					actiontarget.setText("Either the user name or password is wrong");
-				}
-			}
-		});
 		primaryStage.setTitle("Login");
 		primaryStage.setScene(new Scene(fxmlLoader.getRoot(), 300, 275));
 		primaryStage.show();	
-	}
-	
-	public void reInit() {
-		LoginWindow.INSTANCE.getMainWindow().close();
-		usernameField.setText("");
-		passwordField.setText("");
-		LoginWindow.INSTANCE.getPrimStage().show();
 	}
 }

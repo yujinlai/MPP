@@ -1,9 +1,10 @@
-package ui.rulesets;
+package ui.ruleengine;
 
 import java.awt.Component;
 
 import javafx.scene.layout.Pane;
 import ui.AddBookWindow;
+import ui.controller.LibController;
 
 /**
  * Rules:
@@ -20,8 +21,8 @@ public class BookRuleSet implements RuleSet {
 	private AddBookWindow book;
 
 	@Override
-	public void applyRules(Object ob) throws RuleException {
-		book = (AddBookWindow) ob;
+	public void applyRules(LibController libContrl) throws RuleException {
+		//book = (AddBookWindow) ob;
 		//nonemptyRule();
 		//idNumericRule();
 		//lengthRule();

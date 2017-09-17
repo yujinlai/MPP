@@ -7,7 +7,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<fx:root alignment="CENTER" hgap="25.0" prefHeight="450.0" prefWidth="325.0" type="javafx.scene.layout.GridPane" vgap="25.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="CENTER" hgap="25.0" prefHeight="450.0" prefWidth="325.0" type="javafx.scene.layout.GridPane" vgap="25.0" xmlns="http://javafx.com/javafx/8" 
+         xmlns:fx="http://javafx.com/fxml/1"  fx:controller="ui.controller.AddMemberController">
    <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
@@ -35,20 +36,21 @@
       <Label text="State:" GridPane.rowIndex="7" />
       <Label text="Zip code:" GridPane.rowIndex="8" />
       <Label text="Telephone" GridPane.rowIndex="9" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="8" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <TextField fx:id="id" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="firstName" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <TextField fx:id="street" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <TextField fx:id="city" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <TextField fx:id="state" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <TextField fx:id="zipCode" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <TextField fx:id="telephone" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <Button mnemonicParsing="false" onAction="#AddMember" text="Add Member" GridPane.columnIndex="1" GridPane.rowIndex="10" />
       <Label alignment="CENTER" text="Add Library Member" GridPane.columnSpan="2" GridPane.rowSpan="2">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
+      <Text fx:id="actiontarget" GridPane.columnIndex="0" GridPane.rowIndex="11" />
    </children>
    <padding>
       <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />

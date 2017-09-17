@@ -1,13 +1,14 @@
-package ui.rulesets;
+package ui.ruleengine;
 
-import ui.LoginWindow;
+import ui.controller.LibController;
+import ui.controller.LoginController;
 
 public class LoginRuleSet implements RuleSet {
-	private LoginWindow login;
+	private LoginController login;
 
 	@Override
-	public void applyRules(Object ob) throws RuleException {
-		login = (LoginWindow)ob;
+	public void applyRules(LibController libContrl) throws RuleException {
+		login = (LoginController)libContrl;
 		nonemptyRule();
 		
 	}

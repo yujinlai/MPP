@@ -12,10 +12,11 @@ public interface ControllerInterface {
 	public List<String> allBookIds();
 
 	//use case 2
-	public void addLibraryMember(LibraryMember libraryMember);
+	public void addLibraryMember(String userID, String firstName, String lastName, String street, String city, 
+			String state, String zipCode, String telephone);
 
 	//use case 3
-	public void checkoutBook(String memberId, String isbn) throws LibrarySystemException;
+	public CheckoutRecordEntry checkoutBook(String memberId, String isbn) throws LibrarySystemException;
 
 	//use case 4
 	public void addExistingBookCopy(String Isbn);
