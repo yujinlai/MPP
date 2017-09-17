@@ -84,6 +84,7 @@ public class MainWindow extends Stage {
 	}
 	
 	public void adjust() {
+		setInitial();
 		setDisabled();
 		setWelcomeInfo();
 	}
@@ -112,18 +113,13 @@ public class MainWindow extends Stage {
 	
 	//set initial state of main window when sign out
 	public void setInitial() {
-		String[] libmemids = {"#addMemberBtn"};
-		String[] adminlibids = {"#checkoutBookBtn"};
-		//if(SystemController.currentAuth == Auth.LIBRARIAN) {
-		for(int i = 0; i < libmemids.length; i++) {
-			Button checkoutBookBtn = (Button)mainContainer.lookup(libmemids[i]);
+		String[] ids = { "#addMemberBtn", "#checkoutBookBtn", "#addCopyBtn", "#addBookBookBtn", "#printRecordBtn",
+				"#checkoutOverdueBtn" };
+
+		for (int i = 0; i < ids.length; i++) {
+			Button checkoutBookBtn = (Button) mainContainer.lookup(ids[i]);
 			checkoutBookBtn.setDisable(false);
 		}
-		//} else if (SystemController.currentAuth == Auth.ADMIN) {
-		for(int i = 0; i < libmemids.length; i++) {
-			Button checkoutBookBtn = (Button)mainContainer.lookup(adminlibids[i]);
-			checkoutBookBtn.setDisable(false);
-		}
-		//}
+
 	}
 }
