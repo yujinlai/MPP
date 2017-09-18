@@ -114,6 +114,8 @@ public class SystemController implements ControllerInterface {
 		HashMap<String, CheckOutRecord> records = da.readCheckoutRecords();
 		if(records == null)
 			return new CheckOutRecord(memberId);
+		else if(records.get(memberId) == null)
+			return new CheckOutRecord(memberId);
 		return records.get(memberId);
         
 	}
@@ -121,17 +123,17 @@ public class SystemController implements ControllerInterface {
 	@Override
 	//use case 7
 	//The method judges whether the book is overdue is in the BookCopy Class itself
-	public HashMap<BookCopy, LibraryMember> searchCheckOutBooks(String isbn) {
+	public HashMap<CheckoutRecordEntry, LibraryMember> searchOverDueBooks(String isbn) {
 		DataAccess da = new DataAccessFacade();
 		HashMap<String, LibraryMember> membersMap = da.readMemberMap();
-		HashMap<BookCopy, LibraryMember> bookLibMaps = new HashMap<>();
+		HashMap<CheckoutRecordEntry, LibraryMember> recordLibmemMaps = new HashMap<>();
         for(LibraryMember lib : membersMap.values()){
-        	CheckOutRecord checkOut = lib.getCheckoutRecord();
-        	List<BookCopy> searchBookCopies = checkOut.searchBookCopies(isbn);
-        	for(BookCopy bookCopy: searchBookCopies){
-        		bookLibMaps.put(bookCopy, lib);
+        	CheckOutRecord checkOutRecord = getCheckoutRecord(lib.getMemberId());
+        	List<CheckoutRecordEntry> recordEntries = checkOutRecord.searchOverdueBookCopies(isbn);
+        	for(CheckoutRecordEntry entry: recordEntries){
+        		recordLibmemMaps.put(entry, lib);
         	}
         }
-		return bookLibMaps;
+		return recordLibmemMaps;
 	}
 }

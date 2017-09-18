@@ -46,4 +46,14 @@ public class CheckOutRecord implements Serializable {
 		}
 		return bookCopies;
 	}
+	
+	public List<CheckoutRecordEntry> searchOverdueBookCopies(String isbn){
+		ArrayList<CheckoutRecordEntry> recordEntries = new ArrayList<>();
+		for(CheckoutRecordEntry entry : entries){
+			if(entry.getRequestedBook().getBook().getIsbn().equals(isbn) && 
+					entry.isDue())
+				recordEntries.add(entry);
+		}
+		return recordEntries;
+	}
 }

@@ -28,6 +28,6 @@ public interface ControllerInterface {
 	public CheckOutRecord getCheckoutRecord(String memberId);
 
 	//use case 7
-	public HashMap<BookCopy, LibraryMember> searchCheckOutBooks(String isbn);
+	public HashMap<CheckoutRecordEntry, LibraryMember> searchOverDueBooks(String isbn);
 
 }

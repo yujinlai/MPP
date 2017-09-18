@@ -9,6 +9,7 @@ import ui.AddLibMemberWindow;
 import ui.LoginWindow;
 import ui.controller.AddBookCopyController;
 import ui.controller.AddMemberController;
+import ui.controller.CheckOverDueController;
 import ui.controller.CheckoutBookController;
 import ui.controller.LibController;
 import ui.controller.LoginController;
@@ -28,6 +29,7 @@ final public class RuleSetFactory {
 		map3.put(CheckoutBookController.class, new CheckoutBookRuleSet());
 		map3.put(AddBookCopyController.class, new AddBookCopyRuleSet());
 		map3.put(PrintController.class, new PrintRecordsRuleSet());
+		map3.put(CheckOverDueController.class, new CheckOverDueRuleSet());
 	}
 	public static RuleSet getRuleSet(Pane c) {
 		Class<? extends Pane> cl = c.getClass();

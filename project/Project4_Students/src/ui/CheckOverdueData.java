@@ -3,17 +3,16 @@ package ui;
 public class CheckOverdueData {
 	private String isbn;
     private String bookTitle;
-    private String bookNumber;
-    private String memberName;
+    private String copyNumber;
+    private String memberID;
     private String dueDay;
     
-    public CheckOverdueData(String isbn, String bookTitle,String bookNumber, String memberName, String dueDay){
+    public CheckOverdueData(String isbn, String bookTitle,String bookNumber, String memberID, String dueDay){
     	this.isbn = isbn;
     	this.bookTitle = bookTitle;
-    	this.bookNumber = bookNumber;
-    	this.memberName = memberName;
+    	this.copyNumber = bookNumber;
+    	this.memberID = memberID;
     	this.dueDay = dueDay;
- 
     }
     
     public String getIsbn() {
@@ -23,10 +22,10 @@ public class CheckOverdueData {
 		this.isbn = isbn;
 	}
     public String getBookNumber() {
-        return bookNumber;
+        return copyNumber;
     }
 	public void setBookNumber(String bookNumber) {
-		this.bookNumber = bookNumber;
+		this.copyNumber = bookNumber;
 	}
 	public String getBookTitle() {
         return bookTitle;
@@ -35,10 +34,10 @@ public class CheckOverdueData {
 		this.bookTitle = bookTitle;
 	}
 	public String getMemberName() {
-        return memberName;
+        return memberID;
     }
 	public void setMemberName(String memberName) {
-		this.memberName = memberName;
+		this.memberID = memberName;
 	}
 	public String getDueDay() {
         return dueDay;

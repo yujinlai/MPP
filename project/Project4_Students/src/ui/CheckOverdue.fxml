@@ -7,7 +7,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefHeight="360.0" prefWidth="606.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="360.0" prefWidth="606.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ui.controller.CheckOverDueController">
    <children>
       <Label alignment="CENTER" prefHeight="52.0" prefWidth="511.0" text="Check Overdue">
          <font>
@@ -24,7 +25,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Label>
-            <TextField>
+            <TextField fx:id="isbn">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
@@ -32,7 +33,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </TextField>
-            <Button mnemonicParsing="false" onAction="#CheckOverdue" text="Check">
+            <Button mnemonicParsing="false" onAction="#checkOverdue" text="Check">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
@@ -42,10 +43,11 @@
             </Button>
          </children>
       </HBox>
-      <TableView id="checkOverdueTable" prefHeight="248.0" prefWidth="606.0">
+      <TableView fx:id="checkOverdueTable" prefHeight="248.0" prefWidth="606.0">
         <columns>
           
         </columns>
       </TableView>
+      <Text fx:id="actiontarget" wrappingWidth="450.0" />
    </children>
 </fx:root>
