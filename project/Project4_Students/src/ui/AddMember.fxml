@@ -42,9 +42,9 @@
       <TextField fx:id="state" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <TextField fx:id="zipCode" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <TextField fx:id="telephone" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-      <Button mnemonicParsing="false" onAction="#AddMember" text="Add Member" GridPane.rowIndex="9" />
+      <Button mnemonicParsing="false" onAction="#addMember" text="Add Member" GridPane.rowIndex="9" />
       <Text fx:id="actiontarget" wrappingWidth="260.0" GridPane.rowIndex="10" />
-      <Button id="allMembers" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="All Members" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <Button id="allMembers" onAction="#allMembers" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="All Members" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Member" wrappingWidth="226.12109375">
          <font>
             <Font size="18.0" />

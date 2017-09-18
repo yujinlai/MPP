@@ -74,8 +74,7 @@ public class AddAuthorWindow extends GridPane {
         	cancel.setOnAction(new EventHandler<ActionEvent>() {
 	        	@Override
 	        	public void handle(ActionEvent e) {
-	        		try {
-	        			
+	        		try {	        			
 	        			stage.close();
 	        		} catch(Exception ex) {
 	        			//messageBar.setFill(Start.Colors.red);

@@ -26,14 +26,10 @@ public class AllMembersNewWindow extends VBox {
 	
 	@SuppressWarnings("unchecked")
 	public void init(final Stage stg) {
-
-		//Initialize the Stage with type of modal
+		
 		stage.initModality(Modality.APPLICATION_MODAL);
-		//Set the owner of the Stage 
 		stage.initOwner(stg);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AllMembers.fxml"));
-        //fxmlLoader.setRoot(this);
-        //fxmlLoader.setController(this);
 
         try {
         	mainContainer = fxmlLoader.load();
@@ -58,26 +54,21 @@ public class AllMembersNewWindow extends VBox {
             new PropertyValueFactory<AllMembersData, String>("lastName"));
         lastNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        
-        @SuppressWarnings("unchecked")
 		TableView<AllMembersData> table = (TableView<AllMembersData>)mainContainer.lookup("#allMembersTable");
         table.getColumns().addAll(idCol,firstNameCol,lastNameCol); 
         
         Scene scene = new Scene(mainContainer, 400, 300,Color.BEIGE);
         stage.setScene(scene);
-        //stage.show();
 	}
 	
 	public void Show() {
 		stage.show();
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setAllMembers(ArrayList<AllMembersData> data) {
-		
 		ObservableList<AllMembersData> allData = FXCollections.observableArrayList(data);
-		@SuppressWarnings("unchecked")
 		TableView<AllMembersData> table = (TableView<AllMembersData>)mainContainer.lookup("#allMembersTable");
-		table.setItems(allData);
-		
+		table.setItems(allData);		
 	}
 }

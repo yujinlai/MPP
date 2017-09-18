@@ -31,7 +31,7 @@ public class AddMemberWindow extends GridPane {
 	}
 	
 	 @FXML
-	 protected void AddMember() {
+	 protected void addMember() {
 	     System.out.println("The AddMember button was clicked!");
 	 }
 }

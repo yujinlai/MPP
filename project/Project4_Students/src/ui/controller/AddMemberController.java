@@ -1,10 +1,17 @@
 package ui.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import business.ControllerInterface;
+import business.LibraryMember;
 import business.SystemController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import ui.AllMembersData;
+import ui.AllMembersNewWindow;
+import ui.LoginWindow;
 import ui.ruleengine.RuleException;
 import ui.ruleengine.RuleSet;
 import ui.ruleengine.RuleSetFactory;
@@ -74,7 +81,7 @@ public class AddMemberController implements LibController {
 	}
 	
 	@FXML
-	protected void AddMember() {
+	protected void addMember() {
 		try {
 			RuleSet rules = RuleSetFactory.getRuleSet(AddMemberController.this);
 			rules.applyRules(AddMemberController.this);
@@ -87,6 +94,25 @@ public class AddMemberController implements LibController {
 			actiontarget.setText(e.getMessage());
 		} 
 	}
+	
+	@FXML
+	protected void allMembers() {
+		try {
+			AllMembersNewWindow allMembers = new AllMembersNewWindow(LoginWindow.INSTANCE.getMainWindow());
+			ArrayList<AllMembersData> data = new ArrayList<AllMembersData>();
+			ControllerInterface c = new SystemController();
+			List<LibraryMember> all = c.allLibMembers();
+			for (LibraryMember m : all) {
+				data.add(new AllMembersData(m.getMemberId(), m.getFirstName(), m.getLastName()));
+			}
+			allMembers.setAllMembers(data);
+			allMembers.Show();
+		} catch (Exception ex) {
+			// messageBar.setFill(Start.Colors.red);
+			ex.printStackTrace();
+		}
+	}
+	
 	
 	private void emptyAllFields() {
 		id.setText("");

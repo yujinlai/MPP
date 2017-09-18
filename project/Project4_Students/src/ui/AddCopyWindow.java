@@ -11,6 +11,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.VBox;
 
 public class AddCopyWindow extends VBox {
+	@SuppressWarnings("unchecked")
 	public AddCopyWindow() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddCopy.fxml"));
         fxmlLoader.setRoot(this);        

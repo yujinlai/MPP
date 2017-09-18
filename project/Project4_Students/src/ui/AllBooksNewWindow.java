@@ -11,7 +11,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -60,8 +59,6 @@ public class AllBooksNewWindow extends VBox {
             new PropertyValueFactory<AllBooksData, String>("maxCheckoutLen"));
         maxCheckoutLenCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        
-        @SuppressWarnings("unchecked")
 		TableView<AllBooksData> table = (TableView<AllBooksData>)mainContainer.lookup("#allBooksTable");
         table.getColumns().addAll(isbnCol,bookTitleCol,maxCheckoutLenCol); 
         
@@ -74,10 +71,9 @@ public class AllBooksNewWindow extends VBox {
 		stage.show();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void setAllBooks(ArrayList<AllBooksData> data) {
-		
 		ObservableList<AllBooksData> allData = FXCollections.observableArrayList(data);
-		@SuppressWarnings("unchecked")
 		TableView<AllBooksData> table = (TableView<AllBooksData>)mainContainer.lookup("#allBooksTable");
 		table.setItems(allData);
 	}
