@@ -8,6 +8,7 @@ import business.BookCopy;
 import business.CheckoutRecordEntry;
 import business.ControllerInterface;
 import business.LibraryMember;
+import business.LibrarySystemException;
 import business.SystemController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,6 +54,8 @@ public class CheckOverDueController implements LibController {
 			else
 				setBookRecord(maps);
 		} catch (RuleException e) {
+			actiontarget.setText(e.getMessage());
+		} catch (LibrarySystemException e) {
 			actiontarget.setText(e.getMessage());
 		}
 	}

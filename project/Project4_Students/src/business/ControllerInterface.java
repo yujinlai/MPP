@@ -29,9 +29,9 @@ public interface ControllerInterface {
 	public void addBook(String isbn, String title, int maxCheckoutLength, List<Author> authors, int copyNum);
 
 	//use case 6
-	public CheckOutRecord getCheckoutRecord(String memberId);
+	public CheckOutRecord getCheckoutRecord(String memberId) throws LibrarySystemException;
 
 	//use case 7
-	public HashMap<CheckoutRecordEntry, LibraryMember> searchOverDueBooks(String isbn);
+	public HashMap<CheckoutRecordEntry, LibraryMember> searchOverDueBooks(String isbn) throws LibrarySystemException;
 
 }

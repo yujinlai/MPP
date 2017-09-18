@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import business.CheckOutRecord;
 import business.CheckoutRecordEntry;
 import business.ControllerInterface;
+import business.LibrarySystemException;
 import business.SystemController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -39,6 +40,8 @@ public class PrintController implements LibController {
 			printConsole(record);
 		} catch (RuleException e1) {
 			actiontarget.setText(e1.getMessage());
+		} catch (LibrarySystemException e) {
+			actiontarget.setText(e.getMessage());
 		} 
 	}
 	
