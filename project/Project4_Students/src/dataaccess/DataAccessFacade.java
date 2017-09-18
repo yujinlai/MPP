@@ -147,7 +147,7 @@ public class DataAccessFacade implements DataAccess {
 			in = new ObjectInputStream(Files.newInputStream(path));
 			retVal = in.readObject();
 		} catch(Exception e) {
-			e.printStackTrace();
+		    //e.printStackTrace();
 		} finally {
 			if(in != null) {
 				try {

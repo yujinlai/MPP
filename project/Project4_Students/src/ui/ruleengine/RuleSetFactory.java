@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import ui.AddBookWindow;
 import ui.AddLibMemberWindow;
 import ui.LoginWindow;
 import ui.controller.AddBookCopyController;
@@ -22,7 +21,6 @@ final public class RuleSetFactory {
 	static HashMap<Class<? extends LibController>, RuleSet> map3 = new HashMap<>();
 	static {
 		map1.put(AddLibMemberWindow.class, new LibraryMemberRuleSet());
-		map1.put(AddBookWindow.class, new BookRuleSet());
 		map2.put(LoginWindow.class, new LoginRuleSet());
 		map3.put(LoginController.class, new LoginRuleSet());
 		map3.put(AddMemberController.class, new LibraryMemberRuleSet());

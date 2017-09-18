@@ -38,8 +38,9 @@ public class PrintController implements LibController {
 			ControllerInterface c = new SystemController();
 			CheckOutRecord record = c.getCheckoutRecord(memberID.getText().trim());
 			printConsole(record);
-		} catch (RuleException e1) {
-			actiontarget.setText(e1.getMessage());
+			actiontarget.setText("Please check out the console to get the output");
+		} catch (RuleException e) {
+			actiontarget.setText(e.getMessage());
 		} catch (LibrarySystemException e) {
 			actiontarget.setText(e.getMessage());
 		} 
