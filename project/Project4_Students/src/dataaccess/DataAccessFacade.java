@@ -115,6 +115,12 @@ public class DataAccessFacade implements DataAccess {
 		memberList.forEach(member -> members.put(member.getMemberId(), member));
 		saveToStorage(StorageType.MEMBERS, members);
 	}
+	
+	static void loadCheckoutRecords(List<CheckOutRecord> recordsList) {
+		HashMap<String, CheckOutRecord> members = new HashMap<String, CheckOutRecord>();
+		recordsList.forEach(member -> members.put(member.getMemberID(), member));
+		saveToStorage(StorageType.CHECKOUTRECORDS, members);
+	}
 
 	static void saveToStorage(StorageType type, Object ob) {
 		ObjectOutputStream out = null;

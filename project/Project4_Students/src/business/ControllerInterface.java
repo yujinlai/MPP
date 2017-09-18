@@ -10,6 +10,10 @@ public interface ControllerInterface {
 	public List<String> allMemberIds();
 
 	public List<String> allBookIds();
+	
+	public List<LibraryMember> allLibMembers() ;
+	
+	public List<Book> allLibBooks();
 
 	//use case 2
 	public void addLibraryMember(String userID, String firstName, String lastName, String street, String city, 

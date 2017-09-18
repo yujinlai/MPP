@@ -44,11 +44,19 @@ public class TestData {
 			add(new Book("28-12331", "Antartica", 7, Arrays.asList(allAuthors.get(2))));
 			add(new Book("99-22223", "Thinking Java", 21, Arrays.asList(allAuthors.get(3))));
 			add(new Book("48-56882", "Jimmy's First Day of School", 7, Arrays.asList(allAuthors.get(4))));
-
 		}
 	};
 
-
+//	@SuppressWarnings("serial")
+//	List<CheckOutRecord> recordsList = new ArrayList<CheckOutRecord>() {
+//		{
+//			add(new CheckOutRecord("23-11451", "The Big Fish", 21,
+//					Arrays.asList(allAuthors.get(0), allAuthors.get(1))));
+//			add(new Book("28-12331", "Antartica", 7, Arrays.asList(allAuthors.get(2))));
+//			add(new Book("99-22223", "Thinking Java", 21, Arrays.asList(allAuthors.get(3))));
+//			add(new Book("48-56882", "Jimmy's First Day of School", 7, Arrays.asList(allAuthors.get(4))));
+//		}
+//	};
 
 	@SuppressWarnings("serial")
 	List<User> allUsers = new ArrayList<User>() {
@@ -82,7 +90,11 @@ public class TestData {
 	public void userData() {
 		DataAccessFacade.loadUserMap(allUsers);
 	}
-
+	
+	//
+//	public void recordsData() {	
+//		DataAccessFacade.loadCheckoutRecords(recordsList);
+//	}
 
 
 	//create library members

@@ -2,12 +2,8 @@ package ui;
 
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -28,9 +24,7 @@ public class AddMemberWindow extends GridPane {
         fxmlLoader.setController(this);
  
         try {
-        	mainContainer = fxmlLoader.load();
-            
-            
+        	mainContainer = fxmlLoader.load();                      
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

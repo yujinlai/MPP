@@ -42,9 +42,6 @@ public class AddAuthorWindow extends GridPane {
 		//Set the owner of the Stage 
 		stage.initOwner(stg);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddAuthor.fxml"));
-        //fxmlLoader.setRoot(this);
-        //fxmlLoader.setController(this);
-
         try {
         	mainContainer = fxmlLoader.load();
         	Button ok = (Button)mainContainer.lookup("#ok");
