@@ -1,64 +1,74 @@
 package ui;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class AllMembersWindow extends Stage implements LibWindow {
-	public static final AllMembersWindow INSTANCE = new AllMembersWindow();
-	
-	private boolean isInitialized = false;
-	public boolean isInitialized() {
-		return isInitialized;
-	}
-	public void isInitialized(boolean val) {
-		isInitialized = val;
-	}
-	private TextArea ta;
-	public void setData(String data) {
-		ta.setText(data);
-	}
-	private AllMembersWindow() {}
-	
-	public void init() {
-		GridPane grid = new GridPane();
-		grid.setId("top-container");
-		grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+public class AllMembersWindow extends VBox {
+	final Stage stage = new Stage();
 
-        Text scenetitle = new Text("All Member IDs");
-        scenetitle.setFont(Font.font("Harlow Solid Italic", FontWeight.NORMAL, 20)); //Tahoma
-        grid.add(scenetitle, 0, 0, 2, 1);
-
-		ta = new TextArea();
-		grid.add(ta, 0,1);	
+	VBox mainContainer = new VBox();
+	public AllMembersWindow(final Stage stg) {
+		init(stg);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void init(final Stage stg) {
 		
-		Button backBtn = new Button("<= Back to Main");
-        backBtn.setOnAction(new EventHandler<ActionEvent>() {
-        	@Override
-        	public void handle(ActionEvent e) {
-        		//Start.hideAllWindows();
-        		//Start.primStage().show();
-        	}
-        });
-        HBox hBack = new HBox(10);
-        hBack.setAlignment(Pos.BOTTOM_LEFT);
-        hBack.getChildren().add(backBtn);
-        grid.add(hBack, 0, 2);
-		Scene scene = new Scene(grid);
-		scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
-        setScene(scene);
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.initOwner(stg);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AllMembers.fxml"));
+
+        try {
+        	mainContainer = fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+
+        TableColumn<AllMembersData, String> idCol = new TableColumn<>("Member ID");  
+        idCol.setMinWidth(100);
+        idCol.setCellValueFactory(
+            new PropertyValueFactory<AllMembersData, String>("id"));
+        idCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        TableColumn<AllMembersData, String> firstNameCol = new TableColumn<>("First Name");  
+        firstNameCol.setMinWidth(100);
+        firstNameCol.setCellValueFactory(
+            new PropertyValueFactory<AllMembersData, String>("firstName"));
+        firstNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        TableColumn<AllMembersData, String> lastNameCol = new TableColumn<>("Last Name");  
+        lastNameCol.setMinWidth(200);
+        lastNameCol.setCellValueFactory(
+            new PropertyValueFactory<AllMembersData, String>("lastName"));
+        lastNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+		TableView<AllMembersData> table = (TableView<AllMembersData>)mainContainer.lookup("#allMembersTable");
+        table.getColumns().addAll(idCol,firstNameCol,lastNameCol); 
+        
+        Scene scene = new Scene(mainContainer, 400, 300,Color.BEIGE);
+        stage.setScene(scene);
+	}
+	
+	public void Show() {
+		stage.show();
+	}
+
+	@SuppressWarnings("unchecked")
+	public void setAllMembers(ArrayList<AllMembersData> data) {
+		ObservableList<AllMembersData> allData = FXCollections.observableArrayList(data);
+		TableView<AllMembersData> table = (TableView<AllMembersData>)mainContainer.lookup("#allMembersTable");
+		table.setItems(allData);		
 	}
 }

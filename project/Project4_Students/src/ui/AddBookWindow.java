@@ -93,8 +93,7 @@ public class AddBookWindow extends GridPane {
 	
 	@FXML
 	protected void AllBooks() {
-		//System.out.println("The button was clicked!");
-		AllBooksNewWindow aa = new AllBooksNewWindow(stg);
+		AllBooksWindow aa = new AllBooksWindow(stg);
 		ArrayList<AllBooksData> data = new ArrayList<>();
 		ControllerInterface c = new SystemController();
 		List<Book> all = c.allLibBooks();

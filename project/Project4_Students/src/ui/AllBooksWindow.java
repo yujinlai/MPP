@@ -1,63 +1,80 @@
 package ui;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class AllBooksWindow extends Stage implements LibWindow {
-	public static final AllBooksWindow INSTANCE = new AllBooksWindow();
+public class AllBooksWindow extends VBox {
 	
-	private boolean isInitialized = false;
-	public boolean isInitialized() {
-		return isInitialized;
-	}
-	public void isInitialized(boolean val) {
-		isInitialized = val;
-	}
-	private TextArea ta;
-	public void setData(String data) {
-		ta.setText(data);
-	}
-	private AllBooksWindow() {}
-	
-	public void init() {
-		GridPane grid = new GridPane();
-		grid.setId("top-container");
-		grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+	final Stage stage = new Stage();
 
-        Text scenetitle = new Text("All Book IDs");
-        scenetitle.setFont(Font.font("Harlow Solid Italic", FontWeight.NORMAL, 20)); //Tahoma
-        grid.add(scenetitle, 0, 0, 2, 1);
-		
-		ta = new TextArea();
-		grid.add(ta, 0,1);
-		Button backBtn = new Button("<= Back to Main");
-        backBtn.setOnAction(new EventHandler<ActionEvent>() {
-        	@Override
-        	public void handle(ActionEvent e) {
-        		//Start.hideAllWindows();
-        		//Start.primStage().show();
-        	}
-        });
-        HBox hBack = new HBox(10);
-        hBack.setAlignment(Pos.BOTTOM_LEFT);
-        hBack.getChildren().add(backBtn);
-        grid.add(hBack, 0, 2);
-		Scene scene = new Scene(grid);
-		scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
-        setScene(scene);
+	VBox mainContainer = new VBox();
+	public AllBooksWindow(final Stage stg) {
+		init(stg);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void init(final Stage stg) {
+
+		//Initialize the Stage with type of modal
+		stage.initModality(Modality.APPLICATION_MODAL);
+		//Set the owner of the Stage 
+		stage.initOwner(stg);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AllBooks.fxml"));
+        //fxmlLoader.setRoot(this);
+        //fxmlLoader.setController(this);
+
+        try {
+        	mainContainer = fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+
+        TableColumn<AllBooksData, String> isbnCol = new TableColumn<>("ISBN");  
+        isbnCol.setMinWidth(100);
+        isbnCol.setCellValueFactory(
+            new PropertyValueFactory<AllBooksData, String>("isbn"));
+        isbnCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        TableColumn<AllBooksData, String> bookTitleCol = new TableColumn<>("Book Title");  
+        bookTitleCol.setMinWidth(200);
+        bookTitleCol.setCellValueFactory(
+            new PropertyValueFactory<AllBooksData, String>("title"));
+        bookTitleCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        TableColumn<AllBooksData, String> maxCheckoutLenCol = new TableColumn<>("Max Checkout Length");  
+        maxCheckoutLenCol.setMinWidth(100);
+        maxCheckoutLenCol.setCellValueFactory(
+            new PropertyValueFactory<AllBooksData, String>("maxCheckoutLen"));
+        maxCheckoutLenCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+		TableView<AllBooksData> table = (TableView<AllBooksData>)mainContainer.lookup("#allBooksTable");
+        table.getColumns().addAll(isbnCol,bookTitleCol,maxCheckoutLenCol); 
+        
+        Scene scene = new Scene(mainContainer, 400, 300,Color.BEIGE);
+        stage.setScene(scene);
+        
+	}
+
+	public void Show() {
+		stage.show();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void setAllBooks(ArrayList<AllBooksData> data) {
+		ObservableList<AllBooksData> allData = FXCollections.observableArrayList(data);
+		TableView<AllBooksData> table = (TableView<AllBooksData>)mainContainer.lookup("#allBooksTable");
+		table.setItems(allData);
 	}
 }

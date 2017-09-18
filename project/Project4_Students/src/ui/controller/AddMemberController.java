@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import ui.AllMembersData;
-import ui.AllMembersNewWindow;
+import ui.AllMembersWindow;
 import ui.LoginWindow;
 import ui.ruleengine.RuleException;
 import ui.ruleengine.RuleSet;
@@ -98,7 +98,7 @@ public class AddMemberController implements LibController {
 	@FXML
 	protected void allMembers() {
 		try {
-			AllMembersNewWindow allMembers = new AllMembersNewWindow(LoginWindow.INSTANCE.getMainWindow());
+			AllMembersWindow allMembers = new AllMembersWindow(LoginWindow.INSTANCE.getMainWindow());
 			ArrayList<AllMembersData> data = new ArrayList<AllMembersData>();
 			ControllerInterface c = new SystemController();
 			List<LibraryMember> all = c.allLibMembers();
