@@ -49,7 +49,7 @@
       <TextField id="city" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <TextField id="state" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <TextField id="zip" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-      <Text id="actiontarget" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="178.12109375" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+      <Text id="actiontarget" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="178.12109375" GridPane.columnSpan="2" GridPane.rowIndex="13" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Book Author" wrappingWidth="194.12109375" GridPane.columnSpan="2" GridPane.rowSpan="2">
          <font>
             <Font size="25.0" />

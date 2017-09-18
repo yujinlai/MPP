@@ -16,10 +16,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import ui.controller.LibController;
+import ui.ruleengine.RuleException;
+import ui.ruleengine.RuleSet;
+import ui.ruleengine.RuleSetFactory;
 
-public class AddAuthorWindow extends GridPane {
+public class AddAuthorWindow extends GridPane implements LibController {
 	GridPane mainContainer = new GridPane();
 	final Stage stage = new Stage();
+	
 	AddBookWindow abWindow;
 
 
@@ -50,24 +55,26 @@ public class AddAuthorWindow extends GridPane {
 	        	@Override
 	        	public void handle(ActionEvent e) {
 	        		try {
-	        			
-	        			TextField firstName = (TextField) mainContainer.lookup("#firstName");
-	        			TextField lastName = (TextField) mainContainer.lookup("#lastName");
-	        			TextField credentials = (TextField) mainContainer.lookup("#credentials");
-	        			TextField phoneNumber = (TextField) mainContainer.lookup("#phoneNumber");
-	        			TextField bio = (TextField) mainContainer.lookup("#bio");
-	        			TextField street = (TextField) mainContainer.lookup("#street");
-	        			TextField city = (TextField) mainContainer.lookup("#city");
-	        			TextField state = (TextField) mainContainer.lookup("#state");
-	        			TextField zip = (TextField) mainContainer.lookup("#zip");
+	        			actiontarget = (Text) mainContainer.lookup("#actiontarget");
+	        			firstName = (TextField) mainContainer.lookup("#firstName");
+	        			lastName = (TextField) mainContainer.lookup("#lastName");
+	        			credentials = (TextField) mainContainer.lookup("#credentials");
+	        			phoneNumber = (TextField) mainContainer.lookup("#phoneNumber");
+	        			bio = (TextField) mainContainer.lookup("#bio");
+	        			street = (TextField) mainContainer.lookup("#street");
+	        			city = (TextField) mainContainer.lookup("#city");
+	        			state = (TextField) mainContainer.lookup("#state");
+	        			zip = (TextField) mainContainer.lookup("#zip");
+	        			RuleSet rules = RuleSetFactory.getRuleSet(AddAuthorWindow.this);
+	        			rules.applyRules(AddAuthorWindow.this);
 	        			Address addr = new Address(street.getText(),city.getText(),state.getText(),zip.getText());
 	        			Author author = new Author(firstName.getText(),lastName.getText(),phoneNumber.getText(),
 	        					addr, bio.getText(), credentials.getText());
+	        			actiontarget.setText("add book success");
 	        			abWindow.SetAuthors(author);
 	        			stage.close();
-	        		} catch(Exception ex) {
-	        			//messageBar.setFill(Start.Colors.red);
-	        			ex.printStackTrace();
+	        		} catch(RuleException ex) {
+	        			actiontarget.setText(ex.getMessage());
 	        		}
 	        	}
 	        });

@@ -42,7 +42,7 @@
       <Button mnemonicParsing="false" onAction="#NewAuthor" prefHeight="23.0" prefWidth="83.0" text="New..." GridPane.columnIndex="2" GridPane.rowIndex="4" />
       <Button mnemonicParsing="false" onAction="#DeleteAuthor" prefHeight="23.0" prefWidth="84.0" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="6" />
       <Button mnemonicParsing="false" onAction="#AllBooks" prefHeight="23.0" prefWidth="82.0" text="All Books" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-      <Text id="actiontarget" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="297.12109375" GridPane.rowIndex="10" />
+      <Text id="actiontarget" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="297.12109375" GridPane.rowIndex="10" />
       <ComboBox id="maxDays" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <Text id="funcTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Book" wrappingWidth="236.12109375">
          <font>

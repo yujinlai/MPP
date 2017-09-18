@@ -2,6 +2,8 @@ package ui.ruleengine;
 
 import java.util.HashMap;
 
+import ui.AddAuthorWindow;
+import ui.AddBookWindow;
 import ui.controller.AddBookCopyController;
 import ui.controller.AddMemberController;
 import ui.controller.CheckOverDueController;
@@ -20,6 +22,8 @@ final public class RuleSetFactory {
 		map.put(AddBookCopyController.class, new AddBookCopyRuleSet());
 		map.put(PrintController.class, new PrintRecordsRuleSet());
 		map.put(CheckOverDueController.class, new CheckOverDueRuleSet());
+		map.put(AddBookWindow.class, new BookRuleSet());
+		map.put(AddAuthorWindow.class, new AuthorRuleSet());
 	}
 	
 	public static RuleSet getRuleSet(LibController c) {

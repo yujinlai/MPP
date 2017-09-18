@@ -17,9 +17,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import ui.controller.LibController;
+import ui.ruleengine.RuleException;
+import ui.ruleengine.RuleSet;
+import ui.ruleengine.RuleSetFactory;
 
-public class AddBookWindow extends GridPane {
+public class AddBookWindow extends GridPane implements LibController {
 	
 	Stage stg;
 	GridPane mainContainer = new GridPane();
@@ -28,7 +33,44 @@ public class AddBookWindow extends GridPane {
 	int authorIndex;
 	ListView<String> authorList;
 	boolean isNew;
+
+	private TextField isbn;
+	private TextField title;
+	private TextField numOfCopies;
+	private Text actiontarget;
 	
+	public TextField getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(TextField isbn) {
+		this.isbn = isbn;
+	}
+
+	public TextField getTitle() {
+		return title;
+	}
+
+	public void setTitle(TextField title) {
+		this.title = title;
+	}
+
+	public TextField getNumOfCopies() {
+		return numOfCopies;
+	}
+
+	public void setNumOfCopies(TextField numOfCopies) {
+		this.numOfCopies = numOfCopies;
+	}
+	
+	public ArrayList<Author> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(ArrayList<Author> authors) {
+		this.authors = authors;
+	}
+
 	public AddBookWindow() {
 		init();
 	}
@@ -38,16 +80,25 @@ public class AddBookWindow extends GridPane {
 		
 	}
 	@FXML
+	@SuppressWarnings("rawtypes")
 	protected void AddBook() {
-		ControllerInterface c = new SystemController();
-		TextField isbn = (TextField)mainContainer.lookup("#isbn");
-		TextField title = (TextField)mainContainer.lookup("#title");
-		@SuppressWarnings("rawtypes")
-		ComboBox maxDays = (ComboBox)mainContainer.lookup("#maxDays");
-		TextField numOfCopies = (TextField)mainContainer.lookup("#numOfCopies");
-		c.addBook(isbn.getText(), title.getText(), Integer.parseInt(maxDays.getValue().toString()), authors, Integer.parseInt(numOfCopies.getText()));
+		try {
+			actiontarget = (Text) mainContainer.lookup("#actiontarget");
+			isbn = (TextField) mainContainer.lookup("#isbn");
+			title = (TextField) mainContainer.lookup("#title");			
+			ComboBox maxDays = (ComboBox) mainContainer.lookup("#maxDays");
+			numOfCopies = (TextField) mainContainer.lookup("#numOfCopies");
+			RuleSet rules = RuleSetFactory.getRuleSet(AddBookWindow.this);
+			rules.applyRules(AddBookWindow.this);
+			ControllerInterface c = new SystemController();
+			c.addBook(isbn.getText(), title.getText(), Integer.parseInt(maxDays.getValue().toString()), authors,
+					Integer.parseInt(numOfCopies.getText()));
+			actiontarget.setText("add book success");
+		} catch (RuleException e) {			
+			actiontarget.setText(e.getMessage() + " or please keep the author with selected state.");
+		}
 	}
-	
+
 	@FXML
 	protected void NewAuthor() {
 		isNew = true;
@@ -66,7 +117,6 @@ public class AddBookWindow extends GridPane {
 		authorIndex = 0;
 
 		for(Author a : authors) {
-			//String n = a.getFirstName() + " " + a.getLastName();
 			if(name.equals(a.getFirstName() + " " + a.getLastName())) {
 				aa.SetAuthor(a);
 				
@@ -93,15 +143,15 @@ public class AddBookWindow extends GridPane {
 	
 	@FXML
 	protected void AllBooks() {
-		AllBooksWindow aa = new AllBooksWindow(stg);
+		AllBooksWindow allBooks = new AllBooksWindow(stg);
 		ArrayList<AllBooksData> data = new ArrayList<>();
 		ControllerInterface c = new SystemController();
 		List<Book> all = c.allLibBooks();
 		for(Book b: all) {
 			data.add(new AllBooksData(b.getIsbn(),b.getTitle(),String.valueOf(b.getMaxCheckoutLength())));
 		}
-		aa.setAllBooks(data);
-		aa.Show();
+		allBooks.setAllBooks(data);
+		allBooks.Show();
 	}
 	
 	@SuppressWarnings("unchecked")
