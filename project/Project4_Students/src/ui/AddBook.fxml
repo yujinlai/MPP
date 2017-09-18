@@ -24,7 +24,8 @@
    <columnConstraints>
       <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints maxWidth="160.0" minWidth="10.0" prefWidth="121.0" />
-      <ColumnConstraints maxWidth="95.0" minWidth="10.0" prefWidth="60.0" />
+      <ColumnConstraints maxWidth="95.0" minWidth="10.0" prefWidth="80.0" />
+      <ColumnConstraints />
    </columnConstraints>
    <children>
       <Label alignment="CENTER" prefHeight="67.0" prefWidth="271.0" text="Add Book" GridPane.columnSpan="4" GridPane.rowSpan="2">
@@ -41,19 +42,19 @@
       <Label text="ISBN:" GridPane.rowIndex="2" />
       <Label text="Title" GridPane.rowIndex="3" />
       <Label text="Authors:" GridPane.rowIndex="4" />
-      <Label text="Max Days:" GridPane.rowIndex="7" />
-      <Label text="Copy Nums:" GridPane.rowIndex="8" />
+      <Label text="Maximum Days:" GridPane.rowIndex="7" />
+      <Label text="Num of copies:" GridPane.rowIndex="8" />
       <Button mnemonicParsing="false" onAction="#AddBook" prefHeight="25.0" prefWidth="104.0" text="Add Book" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="8" />
-      <Button mnemonicParsing="false" onAction="#EditAuthors" prefHeight="25.0" prefWidth="62.0" text="Edit..." GridPane.columnIndex="2" GridPane.rowIndex="5" />
-      <ListView prefHeight="118.0" prefWidth="109.0" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="3" />
-      <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="67.0" text="New..." GridPane.columnIndex="2" GridPane.rowIndex="4" />
-      <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="68.0" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-      <Button mnemonicParsing="false" text="All Books" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="297.12109375" GridPane.rowIndex="10" />
+      <TextField id="isbn" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField id="title" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField id="numOfCopies" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Button mnemonicParsing="false" onAction="#EditAuthor" prefHeight="23.0" prefWidth="80.0" text="Edit..." GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <ListView id="authorList" prefHeight="118.0" prefWidth="109.0" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="3" />
+      <Button mnemonicParsing="false" onAction="#NewAuthor" prefHeight="23.0" prefWidth="83.0" text="New..." GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" onAction="#DeleteAuthor" prefHeight="23.0" prefWidth="84.0" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+      <Button mnemonicParsing="false" onAction="#AllBooks" prefHeight="23.0" prefWidth="82.0" text="All Books" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+      <Text id="actiontarget" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="297.12109375" GridPane.rowIndex="10" />
+      <ComboBox id="maxDays" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

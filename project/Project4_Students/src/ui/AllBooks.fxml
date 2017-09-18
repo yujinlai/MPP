@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="All Books">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+      <TableView id="allBooksTable" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          
+        </columns>
+      </TableView>
+   </children>
+</VBox>

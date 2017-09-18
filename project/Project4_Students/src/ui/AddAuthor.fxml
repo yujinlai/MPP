@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane hgap="10.0" prefHeight="392.0" prefWidth="332.0" stylesheets="@Login.css" vgap="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+   </columnConstraints>
+   <children>
+      <Button id="ok" mnemonicParsing="false" text="OK" GridPane.rowIndex="12" />
+      <Button id="cancel" mnemonicParsing="false" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+      <Label text="First Name" GridPane.rowIndex="2" />
+      <Label text="Last Name" GridPane.rowIndex="3" />
+      <Label text="Credentials:" GridPane.rowIndex="4" />
+      <Label text="Phont Number" GridPane.rowIndex="5" />
+      <Label text="BIO:" GridPane.rowIndex="6" />
+      <Label text="Street:" GridPane.rowIndex="7" />
+      <Label text="City:" GridPane.rowIndex="8" />
+      <Label text="State:" GridPane.rowIndex="9" />
+      <Label text="Zip:" GridPane.rowIndex="10" />
+      <TextField id="firstName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField id="credentials" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <TextField id="phoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <TextField id="bio" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <TextField id="street" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <TextField id="city" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <TextField id="state" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <TextField id="zip" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+      <Text id="actiontarget" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="178.12109375" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Book Author" wrappingWidth="170.12109375" GridPane.columnSpan="2" GridPane.rowSpan="2" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</GridPane>
