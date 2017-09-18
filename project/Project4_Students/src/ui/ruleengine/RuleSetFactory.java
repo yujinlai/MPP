@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import ui.AddBookWindow;
 import ui.AddLibMemberWindow;
 import ui.LoginWindow;
+import ui.controller.AddBookCopyController;
 import ui.controller.AddMemberController;
 import ui.controller.CheckoutBookController;
 import ui.controller.LibController;
@@ -25,6 +26,7 @@ final public class RuleSetFactory {
 		map3.put(LoginController.class, new LoginRuleSet());
 		map3.put(AddMemberController.class, new LibraryMemberRuleSet());
 		map3.put(CheckoutBookController.class, new CheckoutBookRuleSet());
+		map3.put(AddBookCopyController.class, new AddBookCopyRuleSet());
 		map3.put(PrintController.class, new PrintRecordsRuleSet());
 	}
 	public static RuleSet getRuleSet(Pane c) {

@@ -10,9 +10,7 @@ import ui.controller.LibController;
  * Rules:
  *  1. All fields must be nonempty 
  *  2. memberID and ISBN must be numeric 
- *  3. Isbn must consist of either 10 or 13 characters
- *  4. If Isbn has length 10, the first digit must be 0 or 1
- *  5. If Isbn has length 13, the first 3 digits must be either 978 or 979
+ *  3. Isbn must be in isbn format
  */
 public class CheckoutBookRuleSet implements RuleSet {
 	private String isbn_regex = "^([0-9-]+)$";
