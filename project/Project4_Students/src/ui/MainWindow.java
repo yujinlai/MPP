@@ -78,7 +78,7 @@ public class MainWindow extends Stage {
 
 	    this.setResizable(false);
 		AddButtonHandlers();
-		ShowPane(0);
+		
 		Scene scene = new Scene(mainContainer, 800, 600,Color.BEIGE);
 		setScene(scene);
 	}
@@ -86,6 +86,10 @@ public class MainWindow extends Stage {
 	public void adjust() {
 		setDisabled();
 		setWelcomeInfo();
+		if(SystemController.currentAuth == Auth.LIBRARIAN) 
+			ShowPane(1);
+		else	
+			ShowPane(0);
 	}
 	
 	//based on user auth
