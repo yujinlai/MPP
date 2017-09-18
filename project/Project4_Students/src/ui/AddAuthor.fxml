@@ -50,7 +50,10 @@
       <TextField id="state" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <TextField id="zip" GridPane.columnIndex="1" GridPane.rowIndex="10" />
       <Text id="actiontarget" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="178.12109375" GridPane.columnSpan="2" GridPane.rowIndex="13" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Book Author" wrappingWidth="170.12109375" GridPane.columnSpan="2" GridPane.rowSpan="2" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Book Author" wrappingWidth="194.12109375" GridPane.columnSpan="2" GridPane.rowSpan="2">
+         <font>
+            <Font size="25.0" />
+         </font></Text>
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

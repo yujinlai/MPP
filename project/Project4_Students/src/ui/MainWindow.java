@@ -84,22 +84,28 @@ public class MainWindow extends Stage {
 	}
 	
 	public void adjust() {
-		setInitial();
 		setDisabled();
 		setWelcomeInfo();
 	}
 	
 	//based on user auth
 	private void setDisabled() {
-		String[] libmemids = {"#addMemberBtn"};
-		String[] adminlibids = {"#checkoutBookBtn"};
+		String[] ids = {"#addMemberBtn","#checkoutBookBtn","#addCopyBtn","#addBookBookBtn",
+				"#printRecordBtn","#checkoutOverdueBtn"};
+		for(String id : ids) {
+			Button checkoutBookBtn = (Button)mainContainer.lookup(id);
+			checkoutBookBtn.setDisable(false);
+		}
+		String[] libmemids = {"#addMemberBtn","#addCopyBtn","#addBookBookBtn","#checkoutOverdueBtn"};
+		String[] adminlibids = {"#checkoutBookBtn", "#printRecordBtn"};
+		
 		if(SystemController.currentAuth == Auth.LIBRARIAN) {
 			for(int i = 0; i < libmemids.length; i++) {
 				Button checkoutBookBtn = (Button)mainContainer.lookup(libmemids[i]);
 				checkoutBookBtn.setDisable(true);
 			}
 		} else if (SystemController.currentAuth == Auth.ADMIN) {
-			for(int i = 0; i < libmemids.length; i++) {
+			for(int i = 0; i < adminlibids.length; i++) {
 				Button checkoutBookBtn = (Button)mainContainer.lookup(adminlibids[i]);
 				checkoutBookBtn.setDisable(true);
 			}
@@ -107,19 +113,7 @@ public class MainWindow extends Stage {
 	}
 	
 	private void setWelcomeInfo() {
-		Label welcomeLable = (Label)mainContainer.lookup("#welcomeLable");
-		welcomeLable.setText("welcome " + SystemController.logName);
-	}
-	
-	//set initial state of main window when sign out
-	public void setInitial() {
-		String[] ids = { "#addMemberBtn", "#checkoutBookBtn", "#addCopyBtn", "#addBookBookBtn", "#printRecordBtn",
-				"#checkoutOverdueBtn" };
-
-		for (int i = 0; i < ids.length; i++) {
-			Button checkoutBookBtn = (Button) mainContainer.lookup(ids[i]);
-			checkoutBookBtn.setDisable(false);
-		}
-
+		Text welcomeLable = (Text)mainContainer.lookup("#welcomeLable");
+		welcomeLable.setText("Welcome " + SystemController.logName);
 	}
 }

@@ -10,11 +10,11 @@
 <fx:root prefHeight="360.0" prefWidth="606.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ui.controller.CheckOverDueController">
    <children>
-      <Label alignment="CENTER" prefHeight="52.0" prefWidth="511.0" text="Check Overdue">
+      <Text id="funcTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Check Ovredue Book" wrappingWidth="435.60546875">
          <font>
-            <Font size="15.0" />
+            <Font size="60.0" />
          </font>
-      </Label>
+      </Text>
       <HBox prefHeight="58.0" prefWidth="526.0">
          <children>
             <Label text="ISBN:">

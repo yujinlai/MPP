@@ -52,6 +52,13 @@ root {
    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
 }
 
+#funcTitle {
+   -fx-font-size: 20px;
+   -fx-font-family: "Arial Black";
+   -fx-fill: #818181;
+   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
 #actiontarget {
   -fx-fill: FIREBRICK;
   -fx-font-weight: bold;

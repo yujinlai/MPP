@@ -2,12 +2,13 @@ package ui.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+
+import javafx.scene.text.Text;
 import ui.LoginWindow;
 
 public class MainController implements LibController {
 	@FXML
-	private Label welcomeLable;
+	private Text welcomeLable;
 	
 	@FXML
 	private Button logout;
@@ -22,7 +23,7 @@ public class MainController implements LibController {
 	}
 	
 	@FXML
-	public void logout() {
+	public void logout() {		
 		LoginWindow.INSTANCE.getMainWindow().close();
 		LoginWindow.INSTANCE.getPrimStage().show();
 	}

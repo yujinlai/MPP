@@ -9,7 +9,7 @@
 
 <fx:root prefHeight="399.0" prefWidth="555.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.AddBookCopyController">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Book Copy" wrappingWidth="343.1328125">
+      <Text id="funcTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Book Copy" wrappingWidth="343.1328125">
          <font>
             <Font size="22.0" />
          </font>

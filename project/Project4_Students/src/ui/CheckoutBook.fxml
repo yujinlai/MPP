@@ -9,7 +9,7 @@
 
 <fx:root prefHeight="356.0" prefWidth="594.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.CheckoutBookController">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Checkout Book">
+      <Text id="funcTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Checkout Book">
          <font>
             <Font size="29.0" />
          </font>
