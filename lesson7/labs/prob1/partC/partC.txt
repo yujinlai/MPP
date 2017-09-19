@@ -1,0 +1,1 @@
+For the part C, the class Employee does not override the hashCode method. The default hashCode method fails to take into account the instance variables used by equals method. Therefore, it fails in removeDuplicates method in the class EmployeeInfo to take the Employee object as a key.

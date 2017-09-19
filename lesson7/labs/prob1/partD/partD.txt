@@ -1,0 +1,1 @@
+For the part D, although the class Employee has overriden equals method as well as hashCode method, it is mutable. All attributs can be set from outside of the class.
