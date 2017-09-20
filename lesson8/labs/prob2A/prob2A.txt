@@ -1,0 +1,1 @@
+Two Employee objects having the same name but that should not be considered equal in case that they have different salaries.
