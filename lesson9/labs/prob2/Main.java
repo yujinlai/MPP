@@ -27,10 +27,11 @@ public class Main {
 	
 	static Stream<OrderItem> ordersToItemsStream(Order order) {
 		
-		OrderItem[] chs = new OrderItem[order.getOrderItems().size()];
-		for(int i = 0; i < order.getOrderItems().size(); ++i) {
-			chs[i] = order.getOrderItems().get(i);
-		}
+//		OrderItem[] chs = new OrderItem[order.getOrderItems().size()];
+//		for(int i = 0; i < order.getOrderItems().size(); ++i) {
+//			chs[i] = order.getOrderItems().get(i);
+//		}
+		OrderItem[] chs = order.getOrderItems().stream().toArray(OrderItem[]::new);
 		
 		return Stream.of(chs);
 	}
