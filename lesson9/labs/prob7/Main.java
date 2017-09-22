@@ -36,24 +36,8 @@ public class Main {
 	//Using this ordering, this method sorts the list as part of
 	//a stream pipeline, and prints to the console
 	public static void ordering2(List<String> words) {
-		List<StringBuilder> words2 = new ArrayList<StringBuilder>();
-		for(String word:words){
-			words2.add(new StringBuilder(word));
-		}
-		words2.forEach(StringBuilder::reverse);
-
-		List<String> words3 = new ArrayList<String>();
-		for (StringBuilder word2 : words2) {
-			words3.add(word2.toString());
-		}
-		words3 = words3.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
-
-		words2.clear();
-		for(String word3:words3){
-			words2.add(new StringBuilder(word3));
-		}
-		words2.forEach(StringBuilder::reverse);
-
-		System.out.println(words2);
+		Collections.sort(words,
+				Comparator.comparing((String x) -> new StringBuffer(x).reverse().toString()));
+		System.out.println(words);
 	}
 }
