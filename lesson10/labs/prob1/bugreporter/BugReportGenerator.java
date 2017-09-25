@@ -4,12 +4,12 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Comparator;
 import java.util.List;
 
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import lesson10.labs.prob1.classfinder.ClassFinder;
 
@@ -51,34 +51,21 @@ public class BugReportGenerator {
 	private static final String DESCRIPTION = "description: ";
 	private static final String SEVERITY = "severity: ";
 	public final static String FILE_LOCATION = System.getProperty("user.dir")
-			+ "\\src\\lesson10\\labs\\prob1\\bugreporter\\bug_report.txt";
+			+ "\\src\\lesson10\\labs\\prob1\\bugreporter\\" + REPORT_NAME;
 	public void reportGenerator() {
 		List<Class<?>> classes = ClassFinder.find(PACKAGE_TO_SCAN);
-
-		//sample code for reading annotations -- you will need to change
-		//this quite a bit to solve the problem
-		//Sample code below obtains a list of names of developers assigned to bugs
-		List<String> names = new ArrayList<String>();
-		List<String> reporterNames = new ArrayList<String>();
-		List<String> classNames = new ArrayList<String>();
-		List<String> descriptions = new ArrayList<String>();
-		List<Integer> severities = new ArrayList<Integer>();
+		List<OutputReport> outputReports = new ArrayList<OutputReport>();
 		for(Class<?> cl : classes) {
 			if(cl.isAnnotationPresent(BugReport.class)) {
 				BugReport annotation = (BugReport)cl.getAnnotation(BugReport.class);
-				String name = annotation.assignedTo();
-				String reporterName = annotation.reportedBy();
-				String className = cl.getName();
-				String description = annotation.description();
-				int severity = annotation.severity();
-				names.add(name);
-				reporterNames.add(reporterName);
-				classNames.add(className);
-				descriptions.add(description);
-				severities.add(severity);
+				OutputReport outputReport = new OutputReport(annotation.assignedTo(),
+						annotation.reportedBy(), 
+						cl.getName(), 
+						annotation.description(), 
+						annotation.severity());
+				outputReports.add(outputReport);
 			}
 		}
-		names.stream().forEach(System.out::println);
 		File f = new File(FILE_LOCATION);
 		if (!f.exists()) {
 			try {
@@ -87,14 +74,29 @@ public class BugReportGenerator {
 				LOG.warning("IOException thrown when creating file: " + e.getMessage());
 			}
 		}
+		outputReports = 
+				outputReports.stream().sorted(Comparator.comparing(OutputReport::getName))
+				.collect(Collectors.toList());
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(f))){
-			writer.write("");
+			String name = null;
+			for (OutputReport outputReport : outputReports) {
+				if (name == null) {
+					name = outputReport.getName();
+					writer.write(name + "\n");
+				}else {
+					if (name.equals(outputReport.getName())){
+					}else {
+						writer.write(outputReport.getName() + "\n");
+						name = outputReport.getName();
+					}
+				}
+				writer.write("    " + REPORTED_BY + outputReport.getReporterName() + "\n");
+				writer.write("    " + CLASS_NAME + outputReport.getClassName() + "\n");
+				writer.write("    " + DESCRIPTION + outputReport.getDescription() + "\n");
+				writer.write("    " + SEVERITY + outputReport.getSeverity() + "\n\n");
+			}
 		} catch (IOException e) {
 			LOG.warning("IOException thrown when writing file: " + e.getMessage());
 		}
-		//System.out.println(names);
-
 	}
-
-
 }
